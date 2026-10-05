@@ -1,13 +1,18 @@
 import { Check, Minus, Plus, Timer, X } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
-import type { Exercise, LoggedSet, PlanExercise } from '../types'
+import type { Exercise, LoggedSet, PlanExercise, WorkoutLog } from '../types'
 import { exercises } from '../data/plan'
+import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
 
-export function ExerciseSheet({ exercise, prescription, onClose, onSave, onSwap }: { exercise: Exercise; prescription: PlanExercise; onClose: () => void; onSave: (sets: LoggedSet[]) => void; onSwap: (exerciseId: string) => void }) {
-  const [sets, setSets] = useState<LoggedSet[]>(() => Array.from({ length: prescription.sets }, () => ({ reps: prescription.minReps, weight: 0, done: false })))
+export function ExerciseSheet({ exercise, prescription, logs, date, onClose, onSave, onSwap }: { exercise: Exercise; prescription: PlanExercise; logs: WorkoutLog[]; date: string; onClose: () => void; onSave: (sets: LoggedSet[]) => void; onSwap: (exerciseId: string) => void }) {
+  const history = logs.filter((log) => log.date < date).flatMap((log) => log.exercises.map((entry) => ({ ...entry, date: log.date }))).filter((entry) => entry.exerciseId === exercise.id).sort((a, b) => a.date.localeCompare(b.date))
+  const previous = history[history.length - 1]
+  const [sets, setSets] = useState<LoggedSet[]>(() => Array.from({ length: prescription.sets }, (_, index) => ({ reps: previous?.sets[index]?.reps ?? prescription.minReps, weight: previous?.sets[index]?.weight ?? 0, done: false })))
   const [rest, setRest] = useState(0)
   const [swapId, setSwapId] = useState(exercise.id)
+  const readyToIncrease = Boolean(previous?.sets.length && previous.sets.every((set) => set.done && set.reps >= prescription.maxReps))
+  const chartData = history.map((entry) => { const best = entry.sets.reduce((max, set) => Math.max(max, set.weight * (1 + set.reps / 30)), 0); return { date: entry.date, e1rm: Number(best.toFixed(1)) } })
   useEffect(() => { if (!rest) return; const timer = window.setInterval(() => setRest((value) => Math.max(0, value - 1)), 1000); return () => clearInterval(timer) }, [rest])
   const update = (index: number, key: 'reps' | 'weight', delta: number) => setSets((current) => current.map((set, i) => i === index ? { ...set, [key]: Math.max(0, set[key] + delta) } : set))
   const toggleDone = (index: number) => setSets((current) => current.map((set, i) => i === index ? { ...set, done: !set.done } : set))
@@ -19,6 +24,7 @@ export function ExerciseSheet({ exercise, prescription, onClose, onSave, onSwap 
         <div className="mt-4 overflow-hidden rounded-card border border-line bg-white"><img className="aspect-[16/9] w-full object-contain" src={`${import.meta.env.BASE_URL}${exercise.image}`} alt={`${exercise.name} demonstration`} /></div>
         <div className="mt-4 flex flex-wrap gap-2"><span className="rounded-full bg-[#2a2f3f] px-3 py-2 text-sm text-accent">Beginner</span><span className="rounded-full bg-[#2a2f3f] px-3 py-2 text-sm capitalize text-accent">{exercise.equipment}</span></div>
         <p className="mt-4 text-sm leading-6 text-muted">{exercise.notes[0]}</p>
+        <div className="mt-4 rounded-2xl border border-line bg-panel p-4"><p className="text-sm font-semibold">Last session</p>{previous ? <><p className="mt-2 text-sm text-muted">{previous.sets.map((set) => `${set.weight} × ${set.reps}`).join(' · ')}</p>{readyToIncrease && <p className="mt-3 rounded-xl border border-[#5369a3] bg-navy p-3 text-sm leading-5 text-[#dbe2fa]">You reached the top of the rep range. If every rep felt controlled and pain-free, try just <strong>+2.5</strong> next time. Repeating the same weight is also progress.</p>}</> : <p className="mt-2 text-sm text-muted">No previous session yet. Start lighter than you think and learn the movement.</p>}</div>
         <div className="mt-4 rounded-2xl border border-line bg-panel p-3"><label className="text-sm text-muted">Swap for another {exercise.group} exercise</label><div className="mt-2 flex gap-2"><select value={swapId} onChange={(event) => setSwapId(event.target.value)} className="min-h-12 min-w-0 flex-1 rounded-full border border-line bg-ink px-4 text-sm">{exercises.filter((item) => item.group === exercise.group).map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}</select><button disabled={swapId === exercise.id} onClick={() => onSwap(swapId)} className="min-h-12 rounded-full border border-accent px-4 text-sm font-semibold text-accent disabled:opacity-40">Swap</button></div></div>
         <div className="mt-5 flex items-center justify-between"><h3 className="font-semibold">Working sets</h3><span className="flex items-center gap-2 text-sm text-muted"><Timer size={17} />{rest ? `${Math.floor(rest / 60)}:${String(rest % 60).padStart(2, '0')}` : 'Rest timer'}</span></div>
         <div className="mt-3 space-y-3">{sets.map((set, index) => <div key={index} className={`rounded-card border p-3 ${set.done ? 'border-success bg-[#1e2b24]' : 'border-line bg-panel'}`}>
@@ -26,6 +32,7 @@ export function ExerciseSheet({ exercise, prescription, onClose, onSave, onSwap 
           <div className="grid grid-cols-2 gap-3">{(['weight', 'reps'] as const).map((key) => <div key={key}><p className="mb-2 text-center text-xs uppercase tracking-wider text-muted">{key}</p><div className="flex min-h-12 items-center justify-between rounded-full border border-line bg-ink"><button aria-label={`Decrease ${key}`} onClick={() => update(index, key, key === 'weight' ? -2.5 : -1)} className="grid min-h-11 min-w-11 place-items-center"><Minus size={16} /></button><span className="font-bold tabular">{set[key]}</span><button aria-label={`Increase ${key}`} onClick={() => update(index, key, key === 'weight' ? 2.5 : 1)} className="grid min-h-11 min-w-11 place-items-center"><Plus size={16} /></button></div></div>)}</div>
         </div>)}</div>
         <button onClick={() => onSave(sets)} className="mt-5 min-h-14 w-full rounded-full bg-accent font-bold text-ink">Save exercise</button>
+        <div className="mt-5 rounded-card border border-line bg-panel p-4"><div className="flex items-center justify-between"><h3 className="font-semibold">Strength history</h3><span className="text-xs text-muted">Est. 1RM</span></div><div className="mt-4 h-40">{chartData.length ? <ResponsiveContainer width="100%" height="100%"><LineChart data={chartData} margin={{ top: 4, right: 6, left: -24, bottom: 0 }}><CartesianGrid stroke="#2E2E33" vertical={false} /><XAxis dataKey="date" tick={{ fill: '#92929B', fontSize: 10 }} axisLine={false} tickLine={false} /><YAxis tick={{ fill: '#92929B', fontSize: 10 }} axisLine={false} tickLine={false} domain={['auto', 'auto']} /><Tooltip contentStyle={{ background: '#18181B', border: '1px solid #2E2E33', borderRadius: 12 }} /><Line dataKey="e1rm" stroke="#7490EA" strokeWidth={3} dot={{ fill: '#7490EA', r: 3 }} isAnimationActive={false} /></LineChart></ResponsiveContainer> : <div className="grid h-full place-items-center text-center text-sm text-muted">Log this exercise twice to see a trend.</div>}</div></div>
       </div>
     </motion.section>
   </div>
