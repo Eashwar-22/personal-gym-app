@@ -5,7 +5,7 @@ import { exerciseMap } from '../data/plan'
 import { dateKey, longDate, workoutForDate } from '../utils/date'
 import { streaks, workoutScore } from '../utils/stats'
 
-export function WorkoutView({ date, profile, logs, onOpenCalendar, onExercise, onFinish }: { date: Date; profile: Profile; logs: WorkoutLog[]; onOpenCalendar: () => void; onExercise: (exercise: Exercise, workout: WorkoutDay) => void; onFinish: (workout: WorkoutDay, score: number) => void }) {
+export function WorkoutView({ date, profile, logs, swaps, onOpenCalendar, onExercise, onFinish }: { date: Date; profile: Profile; logs: WorkoutLog[]; swaps: Record<string, string>; onOpenCalendar: () => void; onExercise: (exercise: Exercise, workout: WorkoutDay, originalId: string) => void; onFinish: (workout: WorkoutDay, score: number) => void }) {
   const workout = workoutForDate(date, profile)
   const log = logs.find((item) => item.date === dateKey(date))
   const streak = streaks(profile, logs)
@@ -28,9 +28,10 @@ export function WorkoutView({ date, profile, logs, onOpenCalendar, onExercise, o
         <div className="mt-6 flex items-end justify-between"><div><p className="text-sm text-muted">Your session</p><h2 className="text-2xl font-bold">{workout.exercises.length} exercises</h2></div><span className="text-sm text-muted">~55 min</span></div>
         <div className="mt-3 flex gap-2 rounded-2xl border border-[#34405e] bg-navy p-3 text-sm leading-5 text-[#c9d2f3]"><ShieldCheck className="mt-0.5 shrink-0 text-accent" size={18} /><span>Shoulder work stays light and controlled. Stop if you feel sharp pain.</span></div>
         <div className="mt-4 divide-y divide-line">{workout.exercises.map((item) => {
-          const exercise = exerciseMap.get(item.exerciseId); if (!exercise) return null
-          const done = log?.exercises.find((entry) => entry.exerciseId === item.exerciseId)?.completed
-          return <button key={item.exerciseId} onClick={() => onExercise(exercise, workout)} className="flex min-h-[94px] w-full items-center gap-3 py-4 text-left">
+          const exerciseId = swaps[`${dateKey(date)}:${item.exerciseId}`] ?? item.exerciseId
+          const exercise = exerciseMap.get(exerciseId); if (!exercise) return null
+          const done = log?.exercises.find((entry) => entry.exerciseId === exerciseId)?.completed
+          return <button key={item.exerciseId} onClick={() => onExercise(exercise, workout, item.exerciseId)} className="flex min-h-[94px] w-full items-center gap-3 py-4 text-left">
             <div className="w-14 shrink-0 text-center"><p className="text-base font-bold tabular">{item.sets} × {item.minReps}–{item.maxReps}</p><p className="mt-1 text-xs text-muted">sets × reps</p></div>
             <img src={`${import.meta.env.BASE_URL}${exercise.image}`} alt="" className="h-14 w-14 rounded-full border border-line bg-white object-cover" />
             <div className="min-w-0 flex-1"><p className="truncate font-semibold text-accent">{exercise.name}</p><p className="mt-1 text-sm capitalize text-muted">{exercise.group} · {exercise.equipment}</p></div>
