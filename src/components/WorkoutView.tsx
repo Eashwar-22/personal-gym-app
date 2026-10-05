@@ -3,10 +3,13 @@ import { motion } from 'framer-motion'
 import type { Exercise, Profile, WorkoutDay, WorkoutLog } from '../types'
 import { exerciseMap } from '../data/plan'
 import { dateKey, longDate, workoutForDate } from '../utils/date'
+import { streaks, workoutScore } from '../utils/stats'
 
-export function WorkoutView({ date, profile, logs, onOpenCalendar, onExercise }: { date: Date; profile: Profile; logs: WorkoutLog[]; onOpenCalendar: () => void; onExercise: (exercise: Exercise, workout: WorkoutDay) => void }) {
+export function WorkoutView({ date, profile, logs, onOpenCalendar, onExercise, onFinish }: { date: Date; profile: Profile; logs: WorkoutLog[]; onOpenCalendar: () => void; onExercise: (exercise: Exercise, workout: WorkoutDay) => void; onFinish: (workout: WorkoutDay, score: number) => void }) {
   const workout = workoutForDate(date, profile)
   const log = logs.find((item) => item.date === dateKey(date))
+  const streak = streaks(profile, logs)
+  const score = workout ? workoutScore(log?.exercises ?? [], workout.exercises.length, Boolean(log?.completed)) : 0
   const adjacent = [-1, 0, 1].map((offset) => { const item = new Date(date); item.setDate(date.getDate() + offset); return item })
 
   return <motion.main initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: .18 }} className="pb-28">
@@ -19,8 +22,8 @@ export function WorkoutView({ date, profile, logs, onOpenCalendar, onExercise }:
       <button onClick={onOpenCalendar} className="mt-5 flex min-h-12 items-center gap-2 rounded-full border border-[#3c4c75] bg-navy px-4 text-sm font-semibold text-[#dbe2fa]"><CalendarDays size={18} className="text-accent" />Date</button>
       {workout ? <>
         <section className="mt-5 grid grid-cols-2 gap-3 rounded-card border border-line bg-panel p-4">
-          <div className="flex items-center gap-3"><span className="grid h-10 w-10 place-items-center rounded-full bg-[#2a2f3f] text-accent"><Flame size={19} /></span><div><p className="text-xs text-muted">Current streak</p><p className="text-lg font-bold tabular">— workouts</p></div></div>
-          <div className="flex items-center gap-3"><span className="grid h-10 w-10 place-items-center rounded-full bg-[#2a2f3f] text-accent"><Trophy size={19} /></span><div><p className="text-xs text-muted">Today’s score</p><p className="text-lg font-bold tabular">{log?.score ?? 0} pts</p></div></div>
+          <div className="flex items-center gap-3"><span className="grid h-10 w-10 place-items-center rounded-full bg-[#2a2f3f] text-accent"><Flame size={19} /></span><div><p className="text-xs text-muted">Current streak</p><p className="text-lg font-bold tabular">{streak.current} workout{streak.current === 1 ? '' : 's'}</p></div></div>
+          <div className="flex items-center gap-3"><span className="grid h-10 w-10 place-items-center rounded-full bg-[#2a2f3f] text-accent"><Trophy size={19} /></span><div><p className="text-xs text-muted">Today’s score</p><p className="text-lg font-bold tabular">{score} pts</p></div></div>
         </section>
         <div className="mt-6 flex items-end justify-between"><div><p className="text-sm text-muted">Your session</p><h2 className="text-2xl font-bold">{workout.exercises.length} exercises</h2></div><span className="text-sm text-muted">~55 min</span></div>
         <div className="mt-3 flex gap-2 rounded-2xl border border-[#34405e] bg-navy p-3 text-sm leading-5 text-[#c9d2f3]"><ShieldCheck className="mt-0.5 shrink-0 text-accent" size={18} /><span>Shoulder work stays light and controlled. Stop if you feel sharp pain.</span></div>
@@ -35,6 +38,8 @@ export function WorkoutView({ date, profile, logs, onOpenCalendar, onExercise }:
           </button>
         })}</div>
         <div className="mt-5 rounded-card border border-line bg-panel p-5"><p className="text-sm text-muted">Optional finisher</p><p className="mt-1 font-semibold">{workout.cardio}</p></div>
+        <div className="mt-3 rounded-card border border-line bg-panel p-5"><p className="font-semibold">Score breakdown</p><div className="mt-3 grid grid-cols-2 gap-y-2 text-sm text-muted"><span>Completed exercise</span><span className="text-right text-white">+10</span><span>All sets logged</span><span className="text-right text-white">+5</span><span>Personal best</span><span className="text-right text-white">+5</span><span>Full session</span><span className="text-right text-white">+20</span></div></div>
+        <button disabled={!log || log.exercises.filter((item) => item.completed).length < workout.exercises.length || log.completed} onClick={() => onFinish(workout, workoutScore(log?.exercises ?? [], workout.exercises.length, true))} className="mt-5 min-h-14 w-full rounded-full bg-accent font-bold text-ink disabled:bg-[#303035] disabled:text-muted">{log?.completed ? 'Workout finished' : 'Finish full workout'}</button>
       </> : <section className="mt-8 rounded-card border border-line bg-panel p-7 text-center"><div className="mx-auto grid h-12 w-12 place-items-center rounded-full bg-[#2a2a31] text-accent"><ShieldCheck /></div><h2 className="mt-4 text-xl font-bold">Rest and recover</h2><p className="mt-2 leading-6 text-muted">Rest days are part of the plan. A walk or a few gentle mobility minutes is plenty.</p></section>}
     </div>
   </motion.main>

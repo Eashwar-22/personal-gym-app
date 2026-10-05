@@ -11,7 +11,7 @@ export const plan: WorkoutDay[] = [
       { exerciseId: 'Machine_Bench_Press', sets: 3, minReps: 8, maxReps: 10 },
       { exerciseId: 'Seated_Cable_Rows', sets: 3, minReps: 8, maxReps: 10 },
       { exerciseId: 'Wide-Grip_Lat_Pulldown', sets: 3, minReps: 8, maxReps: 10 },
-      { exerciseId: 'Cable_External_Rotation', sets: 2, minReps: 12, maxReps: 15 },
+      { exerciseId: 'External_Rotation', sets: 2, minReps: 12, maxReps: 15 },
       { exerciseId: 'Machine_Bicep_Curl', sets: 2, minReps: 10, maxReps: 12 },
       { exerciseId: 'Triceps_Pushdown_-_Rope_Attachment', sets: 2, minReps: 10, maxReps: 12 },
     ]
