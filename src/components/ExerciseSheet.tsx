@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import type { Exercise, LoggedSet, PlanExercise, WorkoutLog } from '../types'
 import { exercises } from '../data/plan'
 import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
+import { ExerciseAnimation } from './ExerciseAnimation'
 
 export function ExerciseSheet({ exercise, prescription, logs, date, onClose, onSave, onSwap }: { exercise: Exercise; prescription: PlanExercise; logs: WorkoutLog[]; date: string; onClose: () => void; onSave: (sets: LoggedSet[]) => void; onSwap: (exerciseId: string) => void }) {
   const history = logs.filter((log) => log.date < date).flatMap((log) => log.exercises.map((entry) => ({ ...entry, date: log.date }))).filter((entry) => entry.exerciseId === exercise.id).sort((a, b) => a.date.localeCompare(b.date))
@@ -21,7 +22,7 @@ export function ExerciseSheet({ exercise, prescription, logs, date, onClose, onS
     <motion.section role="dialog" aria-modal="true" aria-label={`Log ${exercise.name}`} initial={{ y: '100%' }} animate={{ y: 0 }} exit={{ y: '100%' }} transition={{ duration: .2 }} className="safe-bottom max-h-[94dvh] w-full overflow-y-auto rounded-t-[28px] border border-line bg-ink p-5">
       <div className="mx-auto max-w-lg">
         <div className="flex items-start justify-between"><div><p className="text-sm capitalize text-muted">{exercise.group} · {exercise.equipment}</p><h2 className="mt-1 text-2xl font-bold">{exercise.name}</h2></div><button aria-label="Close" onClick={onClose} className="grid min-h-11 min-w-11 place-items-center rounded-full border border-line"><X size={20} /></button></div>
-        <div className="mt-4 overflow-hidden rounded-card border border-line bg-white"><img className="aspect-[16/9] w-full object-contain" src={`${import.meta.env.BASE_URL}${exercise.image}`} alt={`${exercise.name} demonstration`} /></div>
+        <div className="mt-4"><ExerciseAnimation exercise={exercise} /></div>
         <div className="mt-4 flex flex-wrap gap-2"><span className="rounded-full bg-[#2a2f3f] px-3 py-2 text-sm text-accent">Beginner</span><span className="rounded-full bg-[#2a2f3f] px-3 py-2 text-sm capitalize text-accent">{exercise.equipment}</span></div>
         <p className="mt-4 text-sm leading-6 text-muted">{exercise.notes[0]}</p>
         <div className="mt-4 rounded-2xl border border-line bg-panel p-4"><p className="text-sm font-semibold">Last session</p>{previous ? <><p className="mt-2 text-sm text-muted">{previous.sets.map((set) => `${set.weight} × ${set.reps}`).join(' · ')}</p>{readyToIncrease && <p className="mt-3 rounded-xl border border-[#5369a3] bg-navy p-3 text-sm leading-5 text-[#dbe2fa]">You reached the top of the rep range. If every rep felt controlled and pain-free, try just <strong>+2.5</strong> next time. Repeating the same weight is also progress.</p>}</> : <p className="mt-2 text-sm text-muted">No previous session yet. Start lighter than you think and learn the movement.</p>}</div>

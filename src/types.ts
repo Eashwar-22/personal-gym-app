@@ -8,6 +8,8 @@ export type Exercise = {
   equipment: string
   level: 'beginner'
   image?: string
+  images?: string[]
+  sourceUrl?: string
   notes: string[]
   shoulderFriendly?: boolean
 }

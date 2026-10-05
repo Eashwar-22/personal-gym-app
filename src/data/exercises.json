@@ -6,6 +6,11 @@
     "equipment": "machine",
     "level": "beginner",
     "image": "exercises/Machine_Bench_Press.jpg",
+    "images": [
+      "exercises/Machine_Bench_Press.jpg",
+      "exercises/Machine_Bench_Press_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Machine_Bench_Press",
     "notes": [
       "Sit down on the Chest Press Machine and select the weight.",
       "Step on the lever provided by the machine since it will help you to bring the handles forward so that you can grab the handles and fully extend the arms."
@@ -19,6 +24,11 @@
     "equipment": "dumbbell",
     "level": "beginner",
     "image": "exercises/Dumbbell_Bench_Press_with_Neutral_Grip.jpg",
+    "images": [
+      "exercises/Dumbbell_Bench_Press_with_Neutral_Grip.jpg",
+      "exercises/Dumbbell_Bench_Press_with_Neutral_Grip_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Dumbbell_Bench_Press_with_Neutral_Grip",
     "notes": [
       "Take a dumbbell in each hand and lay back onto a flat bench. Your feet should be flat on the floor and your shoulder blades retracted.",
       "Maintaining a neutral grip, palms facing each other, begin with your arms extended directly above you, perpendicular to the floor. This will be your starting position."
@@ -32,6 +42,11 @@
     "equipment": "cable",
     "level": "beginner",
     "image": "exercises/Cable_Chest_Press.jpg",
+    "images": [
+      "exercises/Cable_Chest_Press.jpg",
+      "exercises/Cable_Chest_Press_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Cable_Chest_Press",
     "notes": [
       "Adjust the weight to an appropriate amount and be seated, grasping the handles. Your upper arms should be about 45 degrees to the body, with your head and chest up. The elbows should be bent to about 90 degrees. This will be your starting position.",
       "Begin by extending through the elbow, pressing the handles together straight in front of you. Keep your shoulder blades retracted as you execute the movement."
@@ -45,6 +60,11 @@
     "equipment": "machine",
     "level": "beginner",
     "image": "exercises/Butterfly.jpg",
+    "images": [
+      "exercises/Butterfly.jpg",
+      "exercises/Butterfly_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Butterfly",
     "notes": [
       "Sit on the machine with your back flat on the pad.",
       "Take hold of the handles. Tip: Your upper arms should be positioned parallel to the floor; adjust the machine accordingly. This will be your starting position."
@@ -58,6 +78,11 @@
     "equipment": "body only",
     "level": "beginner",
     "image": "exercises/Incline_Push-Up.jpg",
+    "images": [
+      "exercises/Incline_Push-Up.jpg",
+      "exercises/Incline_Push-Up_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Incline_Push-Up",
     "notes": [
       "Stand facing bench or sturdy elevated platform. Place hands on edge of bench or platform, slightly wider than shoulder width.",
       "Position forefoot back from bench or platform with arms and body straight. Arms should be perpendicular to body. Keeping body straight, lower chest to edge of box or platform by bending arms."
@@ -71,6 +96,11 @@
     "equipment": "machine",
     "level": "beginner",
     "image": "exercises/Leverage_Chest_Press.jpg",
+    "images": [
+      "exercises/Leverage_Chest_Press.jpg",
+      "exercises/Leverage_Chest_Press_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Leverage_Chest_Press",
     "notes": [
       "Load an appropriate weight onto the pins and adjust the seat for your height. The handles should be near the bottom or middle of the pectorals at the beginning of the motion.",
       "Your chest and head should be up and your shoulder blades retracted. This will be your starting position."
@@ -84,6 +114,11 @@
     "equipment": "cable",
     "level": "beginner",
     "image": "exercises/Seated_Cable_Rows.jpg",
+    "images": [
+      "exercises/Seated_Cable_Rows.jpg",
+      "exercises/Seated_Cable_Rows_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Seated_Cable_Rows",
     "notes": [
       "For this exercise you will need access to a low pulley row machine with a V-bar. Note: The V-bar will enable you to have a neutral grip where the palms of your hands face each other. To get into the starting position, first sit down on the machine and place your feet on the front platform or crossbar provided making sure that your knees are slightly bent and not locked.",
       "Lean over as you keep the natural alignment of your back and grab the V-bar handles."
@@ -97,6 +132,11 @@
     "equipment": "dumbbell",
     "level": "beginner",
     "image": "exercises/One-Arm_Dumbbell_Row.jpg",
+    "images": [
+      "exercises/One-Arm_Dumbbell_Row.jpg",
+      "exercises/One-Arm_Dumbbell_Row_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/One-Arm_Dumbbell_Row",
     "notes": [
       "Choose a flat bench and place a dumbbell on each side of it.",
       "Place the right leg on top of the end of the bench, bend your torso forward from the waist until your upper body is parallel to the floor, and place your right hand on the other end of the bench for support."
@@ -110,6 +150,11 @@
     "equipment": "cable",
     "level": "beginner",
     "image": "exercises/Wide-Grip_Lat_Pulldown.jpg",
+    "images": [
+      "exercises/Wide-Grip_Lat_Pulldown.jpg",
+      "exercises/Wide-Grip_Lat_Pulldown_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Wide-Grip_Lat_Pulldown",
     "notes": [
       "Sit down on a pull-down machine with a wide bar attached to the top pulley. Make sure that you adjust the knee pad of the machine to fit your height. These pads will prevent your body from being raised by the resistance attached to the bar.",
       "Grab the bar with the palms facing forward using the prescribed grip. Note on grips: For a wide grip, your hands need to be spaced out at a distance wider than shoulder width. For a medium grip, your hands need to be spaced out at a distance equal to your shoulder width and for a close grip at a distance smaller than your shoulder width."
@@ -123,6 +168,11 @@
     "equipment": "cable",
     "level": "beginner",
     "image": "exercises/Close-Grip_Front_Lat_Pulldown.jpg",
+    "images": [
+      "exercises/Close-Grip_Front_Lat_Pulldown.jpg",
+      "exercises/Close-Grip_Front_Lat_Pulldown_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Close-Grip_Front_Lat_Pulldown",
     "notes": [
       "Sit down on a pull-down machine with a wide bar attached to the top pulley. Make sure that you adjust the knee pad of the machine to fit your height. These pads will prevent your body from being raised by the resistance attached to the bar.",
       "Grab the bar with the palms facing forward using the prescribed grip. Note on grips: For a wide grip, your hands need to be spaced out at a distance wider than your shoulder width. For a medium grip, your hands need to be spaced out at a distance equal to your shoulder width and for a close grip at a distance smaller than your shoulder width."
@@ -136,6 +186,11 @@
     "equipment": "cable",
     "level": "beginner",
     "image": "exercises/Straight-Arm_Pulldown.jpg",
+    "images": [
+      "exercises/Straight-Arm_Pulldown.jpg",
+      "exercises/Straight-Arm_Pulldown_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Straight-Arm_Pulldown",
     "notes": [
       "You will start by grabbing the wide bar from the top pulley of a pulldown machine and using a wider than shoulder-width pronated (palms down) grip. Step backwards two feet or so.",
       "Bend your torso forward at the waist by around 30-degrees with your arms fully extended in front of you and a slight bend at the elbows. If your arms are not fully extended then you need to step a bit more backwards until they are. Once your arms are fully extended and your torso is slightly bent at the waist, tighten the lats and then you are ready to begin."
@@ -149,6 +204,11 @@
     "equipment": "machine",
     "level": "beginner",
     "image": "exercises/Leverage_Iso_Row.jpg",
+    "images": [
+      "exercises/Leverage_Iso_Row.jpg",
+      "exercises/Leverage_Iso_Row_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Leverage_Iso_Row",
     "notes": [
       "Load an appropriate weight onto the pins and adjust the seat height so that the handles are at chest level. Grasp the handles with either a neutral or pronated grip. This will be your starting position.",
       "Pull the handles towards your torso, retracting your shoulder blades as you flex the elbow."
@@ -162,6 +222,11 @@
     "equipment": "dumbbell",
     "level": "beginner",
     "image": "exercises/External_Rotation.jpg",
+    "images": [
+      "exercises/External_Rotation.jpg",
+      "exercises/External_Rotation_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/External_Rotation",
     "notes": [
       "Lie sideways on a flat bench with one arm holding a dumbbell and the other hand on top of the bench folded so that you can rest your head on it.",
       "Bend the elbows of the arm holding the dumbbell so that it creates a 90-degree angle between the upper arm and the forearm. Tip: Keep the arm parallel to your torso."
@@ -175,6 +240,11 @@
     "equipment": "cable",
     "level": "beginner",
     "image": "exercises/Cable_Rear_Delt_Fly.jpg",
+    "images": [
+      "exercises/Cable_Rear_Delt_Fly.jpg",
+      "exercises/Cable_Rear_Delt_Fly_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Cable_Rear_Delt_Fly",
     "notes": [
       "Adjust the pulleys to the appropriate height and adjust the weight. The pulleys should be above your head.",
       "Grab the left pulley with your right hand and the right pulley with your left hand, crossing them in front of you. This will be your starting position."
@@ -188,6 +258,11 @@
     "equipment": "machine",
     "level": "beginner",
     "image": "exercises/Reverse_Machine_Flyes.jpg",
+    "images": [
+      "exercises/Reverse_Machine_Flyes.jpg",
+      "exercises/Reverse_Machine_Flyes_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Reverse_Machine_Flyes",
     "notes": [
       "Adjust the handles so that they are fully to the rear. Make an appropriate weight selection and adjust the seat height so the handles are at shoulder level. Grasp the handles with your hands facing inwards. This will be your starting position.",
       "In a semicircular motion, pull your hands out to your side and back, contracting your rear delts."
@@ -201,6 +276,11 @@
     "equipment": "dumbbell",
     "level": "beginner",
     "image": "exercises/Dumbbell_Scaption.jpg",
+    "images": [
+      "exercises/Dumbbell_Scaption.jpg",
+      "exercises/Dumbbell_Scaption_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Dumbbell_Scaption",
     "notes": [
       "This corrective exercise strengthens the muscles that stabilize your shoulder blade. Hold a light weight in each hand, hanging at your sides. Your thumbs should pointing up.",
       "Begin the movement raising your arms out in front of you, about 30 degrees off center. Your arms should be fully extended as you perform the movement."
@@ -214,6 +294,11 @@
     "equipment": "dumbbell",
     "level": "beginner",
     "image": "exercises/Seated_Side_Lateral_Raise.jpg",
+    "images": [
+      "exercises/Seated_Side_Lateral_Raise.jpg",
+      "exercises/Seated_Side_Lateral_Raise_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Seated_Side_Lateral_Raise",
     "notes": [
       "Pick a couple of dumbbells and sit at the end of a flat bench with your feet firmly on the floor. Hold the dumbbells with your palms facing in and your arms straight down at your sides at arms' length. This will be your starting position.",
       "While maintaining the torso stationary (no swinging), lift the dumbbells to your side with a slight bend on the elbow and the hands slightly tilted forward as if pouring water in a glass. Continue to go up until you arms are parallel to the floor. Exhale as you execute this movement and pause for a second at the top."
@@ -227,6 +312,11 @@
     "equipment": "machine",
     "level": "beginner",
     "image": "exercises/Machine_Bicep_Curl.jpg",
+    "images": [
+      "exercises/Machine_Bicep_Curl.jpg",
+      "exercises/Machine_Bicep_Curl_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Machine_Bicep_Curl",
     "notes": [
       "Adjust the seat to the appropriate height and make your weight selection. Place your upper arms against the pads and grasp the handles. This will be your starting position.",
       "Perform the movement by flexing the elbow, pulling your lower arm towards your upper arm."
@@ -240,6 +330,11 @@
     "equipment": "dumbbell",
     "level": "beginner",
     "image": "exercises/Dumbbell_Alternate_Bicep_Curl.jpg",
+    "images": [
+      "exercises/Dumbbell_Alternate_Bicep_Curl.jpg",
+      "exercises/Dumbbell_Alternate_Bicep_Curl_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Dumbbell_Alternate_Bicep_Curl",
     "notes": [
       "Stand (torso upright) with a dumbbell in each hand held at arms length. The elbows should be close to the torso and the palms of your hand should be facing your thighs.",
       "While holding the upper arm stationary, curl the right weight as you rotate the palm of the hands until they are facing forward. At this point continue contracting the biceps as you breathe out until your biceps is fully contracted and the dumbbells are at shoulder level. Hold the contracted position for a second as you squeeze the biceps. Tip: Only the forearms should move."
@@ -253,6 +348,11 @@
     "equipment": "cable",
     "level": "beginner",
     "image": "exercises/Cable_Hammer_Curls_-_Rope_Attachment.jpg",
+    "images": [
+      "exercises/Cable_Hammer_Curls_-_Rope_Attachment.jpg",
+      "exercises/Cable_Hammer_Curls_-_Rope_Attachment_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Cable_Hammer_Curls_-_Rope_Attachment",
     "notes": [
       "Attach a rope attachment to a low pulley and stand facing the machine about 12 inches away from it.",
       "Grasp the rope with a neutral (palms-in) grip and stand straight up keeping the natural arch of the back and your torso stationary."
@@ -266,6 +366,11 @@
     "equipment": "dumbbell",
     "level": "beginner",
     "image": "exercises/Incline_Hammer_Curls.jpg",
+    "images": [
+      "exercises/Incline_Hammer_Curls.jpg",
+      "exercises/Incline_Hammer_Curls_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Incline_Hammer_Curls",
     "notes": [
       "Seat yourself on an incline bench with a dumbbell in each hand. You should pressed firmly against he back with your feet together. Allow the dumbbells to hang straight down at your side, holding them with a neutral grip. This will be your starting position.",
       "Initiate the movement by flexing at the elbow, attempting to keep the upper arm stationary."
@@ -279,6 +384,11 @@
     "equipment": "dumbbell",
     "level": "beginner",
     "image": "exercises/Concentration_Curls.jpg",
+    "images": [
+      "exercises/Concentration_Curls.jpg",
+      "exercises/Concentration_Curls_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Concentration_Curls",
     "notes": [
       "Sit down on a flat bench with one dumbbell in front of you between your legs. Your legs should be spread with your knees bent and feet on the floor.",
       "Use your right arm to pick the dumbbell up. Place the back of your right upper arm on the top of your inner right thigh. Rotate the palm of your hand until it is facing forward away from your thigh. Tip: Your arm should be extended and the dumbbell should be above the floor. This will be your starting position."
@@ -292,6 +402,11 @@
     "equipment": "cable",
     "level": "beginner",
     "image": "exercises/Reverse_Cable_Curl.jpg",
+    "images": [
+      "exercises/Reverse_Cable_Curl.jpg",
+      "exercises/Reverse_Cable_Curl_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Reverse_Cable_Curl",
     "notes": [
       "Stand up with your torso upright while holding a bar attachment that is attached to a low pulley using a pronated (palms down) and shoulder width grip. Make sure also that you keep the elbows close to the torso. This will be your starting position.",
       "While holding the upper arms stationary, curl the weights while contracting the biceps as you breathe out. Only the forearms should move. Continue the movement until your biceps are fully contracted and the bar is at shoulder level. Hold the contracted position for a second as you squeeze the muscle."
@@ -305,6 +420,11 @@
     "equipment": "cable",
     "level": "beginner",
     "image": "exercises/Triceps_Pushdown_-_Rope_Attachment.jpg",
+    "images": [
+      "exercises/Triceps_Pushdown_-_Rope_Attachment.jpg",
+      "exercises/Triceps_Pushdown_-_Rope_Attachment_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Triceps_Pushdown_-_Rope_Attachment",
     "notes": [
       "Attach a rope attachment to a high pulley and grab with a neutral grip (palms facing each other).",
       "Standing upright with the torso straight and a very small inclination forward, bring the upper arms close to your body and perpendicular to the floor. The forearms should be pointing up towards the pulley as they hold the rope with the palms facing each other. This is your starting position."
@@ -318,6 +438,11 @@
     "equipment": "cable",
     "level": "beginner",
     "image": "exercises/Cable_One_Arm_Tricep_Extension.jpg",
+    "images": [
+      "exercises/Cable_One_Arm_Tricep_Extension.jpg",
+      "exercises/Cable_One_Arm_Tricep_Extension_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Cable_One_Arm_Tricep_Extension",
     "notes": [
       "With your right hand, grasp a single handle attached to the high-cable pulley using a supinated (underhand; palms facing up) grip. You should be standing directly in front of the weight stack.",
       "Now pull the handle down so that your upper arm and elbow are locked in to the side of your body. Your upper arm and forearm should form an acute angle (less than 90-degrees). You can keep the other arm by the waist and you can have one leg in front of you and the other one back for better balance. This will be your starting position."
@@ -331,6 +456,11 @@
     "equipment": "machine",
     "level": "beginner",
     "image": "exercises/Machine_Triceps_Extension.jpg",
+    "images": [
+      "exercises/Machine_Triceps_Extension.jpg",
+      "exercises/Machine_Triceps_Extension_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Machine_Triceps_Extension",
     "notes": [
       "Adjust the seat to the appropriate height and make your weight selection. Place your upper arms against the pads and grasp the handles. This will be your starting position.",
       "Perform the movement by extending the elbow, pulling your lower arm away from your upper arm."
@@ -344,6 +474,11 @@
     "equipment": "dumbbell",
     "level": "beginner",
     "image": "exercises/Tricep_Dumbbell_Kickback.jpg",
+    "images": [
+      "exercises/Tricep_Dumbbell_Kickback.jpg",
+      "exercises/Tricep_Dumbbell_Kickback_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Tricep_Dumbbell_Kickback",
     "notes": [
       "Start with a dumbbell in each hand and your palms facing your torso. Keep your back straight with a slight bend in the knees and bend forward at the waist. Your torso should be almost parallel to the floor. Make sure to keep your head up. Your upper arms should be close to your torso and parallel to the floor. Your forearms should be pointed towards the floor as you hold the weights. There should be a 90-degree angle formed between your forearm and upper arm. This is your starting position.",
       "Now, while keeping your upper arms stationary, exhale and use your triceps to lift the weights until the arm is fully extended. Focus on moving the forearm."
@@ -357,6 +492,11 @@
     "equipment": "cable",
     "level": "beginner",
     "image": "exercises/Reverse_Grip_Triceps_Pushdown.jpg",
+    "images": [
+      "exercises/Reverse_Grip_Triceps_Pushdown.jpg",
+      "exercises/Reverse_Grip_Triceps_Pushdown_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Reverse_Grip_Triceps_Pushdown",
     "notes": [
       "Start by setting a bar attachment (straight or e-z) on a high pulley machine.",
       "Facing the bar attachment, grab it with the palms facing up (supinated grip) at shoulder width. Lower the bar by using your lats until your arms are fully extended by your sides. Tip: Elbows should be in by your sides and your feet should be shoulder width apart from each other. This is the starting position."
@@ -370,6 +510,11 @@
     "equipment": "dumbbell",
     "level": "beginner",
     "image": "exercises/Close-Grip_Dumbbell_Press.jpg",
+    "images": [
+      "exercises/Close-Grip_Dumbbell_Press.jpg",
+      "exercises/Close-Grip_Dumbbell_Press_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Close-Grip_Dumbbell_Press",
     "notes": [
       "Place a dumbbell standing up on a flat bench.",
       "Ensuring that the dumbbell stays securely placed at the top of the bench, lie perpendicular to the bench with only your shoulders lying on the surface. Hips should be below the bench and your legs bent with your feet firmly on the floor."
@@ -383,6 +528,11 @@
     "equipment": "machine",
     "level": "beginner",
     "image": "exercises/Leg_Press.jpg",
+    "images": [
+      "exercises/Leg_Press.jpg",
+      "exercises/Leg_Press_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Leg_Press",
     "notes": [
       "Using a leg press machine, sit down on the machine and place your legs on the platform directly in front of you at a medium (shoulder width) foot stance. (Note: For the purposes of this discussion we will use the medium stance described above which targets overall development; however you can choose any of the three stances described in the foot positioning section).",
       "Lower the safety bars holding the weighted platform in place and press the platform all the way up until your legs are fully extended in front of you. Tip: Make sure that you do not lock your knees. Your torso and the legs should make a perfect 90-degree angle. This will be your starting position."
@@ -396,6 +546,11 @@
     "equipment": "machine",
     "level": "beginner",
     "image": "exercises/Leg_Extensions.jpg",
+    "images": [
+      "exercises/Leg_Extensions.jpg",
+      "exercises/Leg_Extensions_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Leg_Extensions",
     "notes": [
       "For this exercise you will need to use a leg extension machine. First choose your weight and sit on the machine with your legs under the pad (feet pointed forward) and the hands holding the side bars. This will be your starting position. Tip: You will need to adjust the pad so that it falls on top of your lower leg (just above your feet). Also, make sure that your legs form a 90-degree angle between the lower and upper leg. If the angle is less than 90-degrees then that means the knee is over the toes which in turn creates undue stress at the knee joint. If the machine is designed that way, either look for another machine or just make sure that when you start executing the exercise you stop going down once you hit the 90-degree angle.",
       "Using your quadriceps, extend your legs to the maximum as you exhale. Ensure that the rest of the body remains stationary on the seat. Pause a second on the contracted position."
@@ -409,6 +564,11 @@
     "equipment": "machine",
     "level": "beginner",
     "image": "exercises/Chair_Squat.jpg",
+    "images": [
+      "exercises/Chair_Squat.jpg",
+      "exercises/Chair_Squat_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Chair_Squat",
     "notes": [
       "To begin, first set the bar to a position that best matches your height. Once the bar is loaded, step under it and position it across the back of your shoulders.",
       "Take the bar with your hands facing forward, unlock it and lift it off the rack by extending your legs."
@@ -422,6 +582,11 @@
     "equipment": "dumbbell",
     "level": "beginner",
     "image": "exercises/Dumbbell_Squat.jpg",
+    "images": [
+      "exercises/Dumbbell_Squat.jpg",
+      "exercises/Dumbbell_Squat_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Dumbbell_Squat",
     "notes": [
       "Stand up straight while holding a dumbbell on each hand (palms facing the side of your legs).",
       "Position your legs using a shoulder width medium stance with the toes slightly pointed out. Keep your head up at all times as looking down will get you off balance and also maintain a straight back. This will be your starting position. Note: For the purposes of this discussion we will use the medium stance described above which targets overall development; however you can choose any of the three stances discussed in the foot stances section."
@@ -435,6 +600,11 @@
     "equipment": "dumbbell",
     "level": "beginner",
     "image": "exercises/Split_Squat_with_Dumbbells.jpg",
+    "images": [
+      "exercises/Split_Squat_with_Dumbbells.jpg",
+      "exercises/Split_Squat_with_Dumbbells_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Split_Squat_with_Dumbbells",
     "notes": [
       "Position yourself into a staggered stance with the rear foot elevated and front foot forward.",
       "Hold a dumbbell in each hand, letting them hang at the sides. This will be your starting position."
@@ -448,6 +618,11 @@
     "equipment": "body only",
     "level": "beginner",
     "image": "exercises/Step-up_with_Knee_Raise.jpg",
+    "images": [
+      "exercises/Step-up_with_Knee_Raise.jpg",
+      "exercises/Step-up_with_Knee_Raise_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Step-up_with_Knee_Raise",
     "notes": [
       "Stand facing a box or bench of an appropriate height with your feet together. This will be your starting position.",
       "Begin the movement by stepping up, putting your left foot on the top of the bench. Extend through the hip and knee of your front leg to stand up on the box. As you stand on the box with your left leg, flex your right knee and hip, bringing your knee as high as you can."
@@ -461,6 +636,11 @@
     "equipment": "machine",
     "level": "beginner",
     "image": "exercises/Seated_Leg_Curl.jpg",
+    "images": [
+      "exercises/Seated_Leg_Curl.jpg",
+      "exercises/Seated_Leg_Curl_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Seated_Leg_Curl",
     "notes": [
       "Adjust the machine lever to fit your height and sit on the machine with your back against the back support pad.",
       "Place the back of lower leg on top of padded lever (just a few inches under the calves) and secure the lap pad against your thighs, just above the knees. Then grasp the side handles on the machine as you point your toes straight (or you can also use any of the other two stances) and ensure that the legs are fully straight right in front of you. This will be your starting position."
@@ -474,6 +654,11 @@
     "equipment": "machine",
     "level": "beginner",
     "image": "exercises/Lying_Leg_Curls.jpg",
+    "images": [
+      "exercises/Lying_Leg_Curls.jpg",
+      "exercises/Lying_Leg_Curls_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Lying_Leg_Curls",
     "notes": [
       "Adjust the machine lever to fit your height and lie face down on the leg curl machine with the pad of the lever on the back of your legs (just a few inches under the calves). Tip: Preferably use a leg curl machine that is angled as opposed to flat since an angled position is more favorable for hamstrings recruitment.",
       "Keeping the torso flat on the bench, ensure your legs are fully stretched and grab the side handles of the machine. Position your toes straight (or you can also use any of the other two stances described on the foot positioning section). This will be your starting position."
@@ -487,6 +672,11 @@
     "equipment": "machine",
     "level": "beginner",
     "image": "exercises/Standing_Leg_Curl.jpg",
+    "images": [
+      "exercises/Standing_Leg_Curl.jpg",
+      "exercises/Standing_Leg_Curl_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Standing_Leg_Curl",
     "notes": [
       "Adjust the machine lever to fit your height and lie with your torso bent at the waist facing forward around 30-45 degrees (since an angled position is more favorable for hamstrings recruitment) with the pad of the lever on the back of your right leg (just a few inches under the calves) and the front of the right leg on top of the machine pad.",
       "Keeping the torso bent forward, ensure your leg is fully stretched and grab the side handles of the machine. Position your toes straight. This will be your starting position."
@@ -500,6 +690,11 @@
     "equipment": "dumbbell",
     "level": "beginner",
     "image": "exercises/Stiff-Legged_Dumbbell_Deadlift.jpg",
+    "images": [
+      "exercises/Stiff-Legged_Dumbbell_Deadlift.jpg",
+      "exercises/Stiff-Legged_Dumbbell_Deadlift_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Stiff-Legged_Dumbbell_Deadlift",
     "notes": [
       "Grasp a couple of dumbbells holding them by your side at arm's length.",
       "Stand with your torso straight and your legs spaced using a shoulder width or narrower stance. The knees should be slightly bent. This is your starting position."
@@ -513,6 +708,11 @@
     "equipment": "cable",
     "level": "beginner",
     "image": "exercises/Pull_Through.jpg",
+    "images": [
+      "exercises/Pull_Through.jpg",
+      "exercises/Pull_Through_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Pull_Through",
     "notes": [
       "Begin standing a few feet in front of a low pulley with a rope or handle attached. Face away from the machine, straddling the cable, with your feet set wide apart.",
       "Begin the movement by reaching through your legs as far as possible, bending at the hips. Keep your knees slightly bent. Keeping your arms straight, extend through the hip to stand straight up. Avoid pulling upward through the shoulders; all of the motion should originate through the hips."
@@ -526,6 +726,11 @@
     "equipment": "body only",
     "level": "beginner",
     "image": "exercises/Butt_Lift_Bridge.jpg",
+    "images": [
+      "exercises/Butt_Lift_Bridge.jpg",
+      "exercises/Butt_Lift_Bridge_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Butt_Lift_Bridge",
     "notes": [
       "Lie flat on the floor on your back with the hands by your side and your knees bent. Your feet should be placed around shoulder width. This will be your starting position.",
       "Pushing mainly with your heels, lift your hips off the floor while keeping your back straight. Breathe out as you perform this part of the motion and hold at the top for a second."
@@ -539,6 +744,11 @@
     "equipment": "machine",
     "level": "beginner",
     "image": "exercises/Seated_Calf_Raise.jpg",
+    "images": [
+      "exercises/Seated_Calf_Raise.jpg",
+      "exercises/Seated_Calf_Raise_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Seated_Calf_Raise",
     "notes": [
       "Sit on the machine and place your toes on the lower portion of the platform provided with the heels extending off. Choose the toe positioning of your choice (forward, in, or out) as per the beginning of this chapter.",
       "Place your lower thighs under the lever pad, which will need to be adjusted according to the height of your thighs. Now place your hands on top of the lever pad in order to prevent it from slipping forward."
@@ -552,6 +762,11 @@
     "equipment": "machine",
     "level": "beginner",
     "image": "exercises/Standing_Calf_Raises.jpg",
+    "images": [
+      "exercises/Standing_Calf_Raises.jpg",
+      "exercises/Standing_Calf_Raises_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Standing_Calf_Raises",
     "notes": [
       "Adjust the padded lever of the calf raise machine to fit your height.",
       "Place your shoulders under the pads provided and position your toes facing forward (or using any of the two other positions described at the beginning of the chapter). The balls of your feet should be secured on top of the calf block with the heels extending off it. Push the lever up by extending your hips and knees until your torso is standing erect. The knees should be kept with a slight bend; never locked. Toes should be facing forward, outwards or inwards as described at the beginning of the chapter. This will be your starting position."
@@ -565,6 +780,11 @@
     "equipment": "machine",
     "level": "beginner",
     "image": "exercises/Calf_Press_On_The_Leg_Press_Machine.jpg",
+    "images": [
+      "exercises/Calf_Press_On_The_Leg_Press_Machine.jpg",
+      "exercises/Calf_Press_On_The_Leg_Press_Machine_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Calf_Press_On_The_Leg_Press_Machine",
     "notes": [
       "Using a leg press machine, sit down on the machine and place your legs on the platform directly in front of you at a medium (shoulder width) foot stance.",
       "Lower the safety bars holding the weighted platform in place and press the platform all the way up until your legs are fully extended in front of you without locking your knees. (Note: In some leg press units you can leave the safety bars on for increased safety. If your leg press unit allows for this, then this is the preferred method of performing the exercise.) Your torso and the legs should make perfect 90-degree angle. Now carefully place your toes and balls of your feet on the lower portion of the platform with the heels extending off. Toes should be facing forward, outwards or inwards as described at the beginning of the chapter. This will be your starting position."
@@ -578,6 +798,11 @@
     "equipment": "dumbbell",
     "level": "beginner",
     "image": "exercises/Dumbbell_Seated_One-Leg_Calf_Raise.jpg",
+    "images": [
+      "exercises/Dumbbell_Seated_One-Leg_Calf_Raise.jpg",
+      "exercises/Dumbbell_Seated_One-Leg_Calf_Raise_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Dumbbell_Seated_One-Leg_Calf_Raise",
     "notes": [
       "Place a block on the floor about 12 inches from a flat bench.",
       "Sit on a flat bench and place a dumbbell on your upper left thigh about 3 inches above your knee."
@@ -591,6 +816,11 @@
     "equipment": "body only",
     "level": "beginner",
     "image": "exercises/Dead_Bug.jpg",
+    "images": [
+      "exercises/Dead_Bug.jpg",
+      "exercises/Dead_Bug_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Dead_Bug",
     "notes": [
       "Begin lying on your back with your hands extended above you toward the ceiling.",
       "Bring your feet, knees, and hips up to 90 degrees."
@@ -604,6 +834,11 @@
     "equipment": "cable",
     "level": "beginner",
     "image": "exercises/Pallof_Press.jpg",
+    "images": [
+      "exercises/Pallof_Press.jpg",
+      "exercises/Pallof_Press_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Pallof_Press",
     "notes": [
       "Connect a standard handle to a tower, and—if possible—position the cable to shoulder height. If not, a low pulley will suffice.",
       "With your side to the cable, grab the handle with both hands and step away from the tower. You should be approximately arm's length away from the pulley, with the tension of the weight on the cable."
@@ -617,6 +852,11 @@
     "equipment": "body only",
     "level": "beginner",
     "image": "exercises/Plank.jpg",
+    "images": [
+      "exercises/Plank.jpg",
+      "exercises/Plank_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Plank",
     "notes": [
       "Get into a prone position on the floor, supporting your weight on your toes and your forearms. Your arms are bent and directly below the shoulder.",
       "Keep your body straight at all times, and hold this position as long as possible. To increase difficulty, an arm or leg can be raised."
@@ -630,6 +870,11 @@
     "equipment": "cable",
     "level": "beginner",
     "image": "exercises/Cable_Crunch.jpg",
+    "images": [
+      "exercises/Cable_Crunch.jpg",
+      "exercises/Cable_Crunch_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Cable_Crunch",
     "notes": [
       "Kneel below a high pulley that contains a rope attachment.",
       "Grasp cable rope attachment and lower the rope until your hands are placed next to your face."
@@ -643,6 +888,11 @@
     "equipment": "body only",
     "level": "beginner",
     "image": "exercises/Reverse_Crunch.jpg",
+    "images": [
+      "exercises/Reverse_Crunch.jpg",
+      "exercises/Reverse_Crunch_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Reverse_Crunch",
     "notes": [
       "Lie down on the floor with your legs fully extended and arms to the side of your torso with the palms on the floor. Your arms should be stationary for the entire exercise.",
       "Move your legs up so that your thighs are perpendicular to the floor and feet are together and parallel to the floor. This is the starting position."
@@ -656,6 +906,11 @@
     "equipment": "body only",
     "level": "beginner",
     "image": "exercises/Side_Bridge.jpg",
+    "images": [
+      "exercises/Side_Bridge.jpg",
+      "exercises/Side_Bridge_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Side_Bridge",
     "notes": [],
     "shoulderFriendly": false
   },
@@ -666,6 +921,11 @@
     "equipment": "body only",
     "level": "beginner",
     "image": "exercises/Glute_Kickback.jpg",
+    "images": [
+      "exercises/Glute_Kickback.jpg",
+      "exercises/Glute_Kickback_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Glute_Kickback",
     "notes": [
       "Kneel on the floor or an exercise mat and bend at the waist with your arms extended in front of you (perpendicular to the torso) in order to get into a kneeling push-up position but with the arms spaced at shoulder width. Your head should be looking forward and the bend of the knees should create a 90-degree angle between the hamstrings and the calves. This will be your starting position.",
       "As you exhale, lift up your right leg until the hamstrings are in line with the back while maintaining the 90-degree angle bend. Contract the glutes throughout this movement and hold the contraction at the top for a second. Tip: At the end of the movement the upper leg should be parallel to the floor while the calf should be perpendicular to it."
@@ -679,6 +939,11 @@
     "equipment": "machine",
     "level": "beginner",
     "image": "exercises/Walking_Treadmill.jpg",
+    "images": [
+      "exercises/Walking_Treadmill.jpg",
+      "exercises/Walking_Treadmill_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Walking_Treadmill",
     "notes": [
       "To begin, step onto the treadmill and select the desired option from the menu. Most treadmills have a manual setting, or you can select a program to run. Typically, you can enter your age and weight to estimate the amount of calories burned during exercise. Elevation can be adjusted to change the intensity of the workout.",
       "Treadmills offer convenience, cardiovascular benefits, and usually have less impact than walking outside. When walking, you should move at a moderate to fast pace, not a leisurely one. Being an activity of lower intensity, walking doesn't burn as many calories as some other activities, but still provides great benefit. A 150 lb person will burn about 175 calories walking 4 miles per hour for 30 minutes, compared to 450 calories running twice as fast. Maintain proper posture as you walk, and only hold onto the handles when necessary, such as when dismounting or checking your heart rate."
@@ -692,6 +957,11 @@
     "equipment": "machine",
     "level": "beginner",
     "image": "exercises/Recumbent_Bike.jpg",
+    "images": [
+      "exercises/Recumbent_Bike.jpg",
+      "exercises/Recumbent_Bike_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Recumbent_Bike",
     "notes": [
       "To begin, seat yourself on the bike and adjust the seat to your height.",
       "Select the desired option from the menu. You may have to start pedaling to turn it on. You can use the manual setting, or you can select a program to use. Typically, you can enter your age and weight to estimate the amount of calories burned during exercise. The level of resistance can be changed throughout the workout. The handles can be used to monitor your heart rate to help you stay at an appropriate intensity."
@@ -705,6 +975,11 @@
     "equipment": "machine",
     "level": "beginner",
     "image": "exercises/Jogging_Treadmill.jpg",
+    "images": [
+      "exercises/Jogging_Treadmill.jpg",
+      "exercises/Jogging_Treadmill_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Jogging_Treadmill",
     "notes": [
       "To begin, step onto the treadmill and select the desired option from the menu. Most treadmills have a manual setting, or you can select a program to run. Typically, you can enter your age and weight to estimate the amount of calories burned during exercise. Elevation can be adjusted to change the intensity of the workout.",
       "Treadmills offer convenience, cardiovascular benefits, and usually have less impact than jogging outside. A 150 lb person will burn almost 250 calories jogging for 30 minutes, compared to more than 450 calories running. Maintain proper posture as you jog, and only hold onto the handles when necessary, such as when dismounting or checking your heart rate."
@@ -718,6 +993,11 @@
     "equipment": "body only",
     "level": "beginner",
     "image": "exercises/Air_Bike.jpg",
+    "images": [
+      "exercises/Air_Bike.jpg",
+      "exercises/Air_Bike_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Air_Bike",
     "notes": [
       "Lie flat on the floor with your lower back pressed to the ground. For this exercise, you will need to put your hands beside your head. Be careful however to not strain with the neck as you perform it. Now lift your shoulders into the crunch position.",
       "Bring knees up to where they are perpendicular to the floor, with your lower legs parallel to the floor. This will be your starting position."
@@ -731,6 +1011,11 @@
     "equipment": "body only",
     "level": "beginner",
     "image": "exercises/Bodyweight_Squat.jpg",
+    "images": [
+      "exercises/Bodyweight_Squat.jpg",
+      "exercises/Bodyweight_Squat_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Bodyweight_Squat",
     "notes": [
       "Stand with your feet shoulder width apart. You can place your hands behind your head. This will be your starting position.",
       "Begin the movement by flexing your knees and hips, sitting back with your hips."
@@ -744,6 +1029,11 @@
     "equipment": "body only",
     "level": "beginner",
     "image": "exercises/Incline_Push-Up_Medium.jpg",
+    "images": [
+      "exercises/Incline_Push-Up_Medium.jpg",
+      "exercises/Incline_Push-Up_Medium_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Incline_Push-Up_Medium",
     "notes": [
       "Stand facing a Smith machine bar or sturdy elevated platform at an appropriate height.",
       "Place your hands on the bar, with your hands about shoulder width apart."
@@ -757,6 +1047,11 @@
     "equipment": "cable",
     "level": "beginner",
     "image": "exercises/Cable_Internal_Rotation.jpg",
+    "images": [
+      "exercises/Cable_Internal_Rotation.jpg",
+      "exercises/Cable_Internal_Rotation_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Cable_Internal_Rotation",
     "notes": [
       "Sit next to a low pulley sideways (with legs stretched in front of you or crossed) and grasp the single hand cable attachment with the arm nearest to the cable. Tip: If you can adjust the pulley's height, you can use a flat bench to sit on instead.",
       "Position the elbow against your side with the elbow bent at 90° and the arm pointing towards the pulley. This will be your starting position."
@@ -770,6 +1065,11 @@
     "equipment": "cable",
     "level": "beginner",
     "image": "exercises/One_Arm_Lat_Pulldown.jpg",
+    "images": [
+      "exercises/One_Arm_Lat_Pulldown.jpg",
+      "exercises/One_Arm_Lat_Pulldown_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/One_Arm_Lat_Pulldown",
     "notes": [
       "Select an appropriate weight and adjust the knee pad to help keep you down. Grasp the handle with a pronated grip. This will be your starting position.",
       "Pull the handle down, squeezing your elbow to your side as you flex the elbow."
@@ -783,6 +1083,11 @@
     "equipment": "dumbbell",
     "level": "beginner",
     "image": "exercises/Seated_Dumbbell_Curl.jpg",
+    "images": [
+      "exercises/Seated_Dumbbell_Curl.jpg",
+      "exercises/Seated_Dumbbell_Curl_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Seated_Dumbbell_Curl",
     "notes": [
       "Sit on a flat bench with a dumbbell on each hand being held at arms length. The elbows should be close to the torso.",
       "Rotate the palms of the hands so that they are facing your torso. This will be your starting position."
@@ -796,6 +1101,11 @@
     "equipment": "cable",
     "level": "beginner",
     "image": "exercises/Triceps_Pushdown.jpg",
+    "images": [
+      "exercises/Triceps_Pushdown.jpg",
+      "exercises/Triceps_Pushdown_end.jpg"
+    ],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Triceps_Pushdown",
     "notes": [
       "Attach a straight or angled bar to a high pulley and grab with an overhand grip (palms facing down) at shoulder width.",
       "Standing upright with the torso straight and a very small inclination forward, bring the upper arms close to your body and perpendicular to the floor. The forearms should be pointing up towards the pulley as they hold the bar. This is your starting position."

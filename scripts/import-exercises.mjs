@@ -26,14 +26,16 @@ if (missing.length) console.warn('Missing:', missing.join(', '))
 await mkdir('public/exercises', { recursive: true })
 const result = []
 for (const item of selected) {
-  const sourceImage = item.images?.[0] ?? fallback.images[0]
-  const filename = `${item.id}.jpg`
-  const target = path.join('public/exercises', filename)
-  if (!existsSync(target)) {
-    const url = `https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/${sourceImage}`
-    const response = await fetch(url)
-    if (!response.ok) throw new Error(`${response.status} ${url}`)
-    await writeFile(target, Buffer.from(await response.arrayBuffer()))
+  const sourceImages = item.images?.length ? item.images.slice(0, 2) : fallback.images.slice(0, 2)
+  const filenames = sourceImages.map((_, index) => index === 0 ? `${item.id}.jpg` : `${item.id}_end.jpg`)
+  for (const [index, sourceImage] of sourceImages.entries()) {
+    const target = path.join('public/exercises', filenames[index])
+    if (!existsSync(target)) {
+      const url = `https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/${sourceImage}`
+      const response = await fetch(url)
+      if (!response.ok) throw new Error(`${response.status} ${url}`)
+      await writeFile(target, Buffer.from(await response.arrayBuffer()))
+    }
   }
   result.push({
     id: item.id,
@@ -41,7 +43,9 @@ for (const item of selected) {
     group: item.primaryMuscles[0],
     equipment: item.equipment || 'body only',
     level: 'beginner',
-    image: `exercises/${filename}`,
+    image: `exercises/${filenames[0]}`,
+    images: filenames.map((filename) => `exercises/${filename}`),
+    sourceUrl: `https://github.com/yuhonas/free-exercise-db/tree/main/exercises/${item.id}`,
     notes: item.instructions.slice(0, 2),
     shoulderFriendly: ['Cable_External_Rotation','External_Rotation','Cable_Rear_Delt_Fly','Reverse_Machine_Flyes','Dumbbell_Scaption'].includes(item.id)
   })
