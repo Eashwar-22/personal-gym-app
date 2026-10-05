@@ -5,7 +5,7 @@ import { dateKey, longDate } from '../utils/date'
 
 const WEEKDAYS = ['S', 'M', 'T', 'W', 'T', 'F', 'Sa']
 
-export function CalendarView({ logs, selected, onSelect, compact = false }: { logs: WorkoutLog[]; selected: Date; onSelect: (date: Date) => void; compact?: boolean }) {
+export function CalendarView({ logs, choices, selected, onSelect, compact = false }: { logs: WorkoutLog[]; choices: Record<string, string>; selected: Date; onSelect: (date: Date) => void; compact?: boolean }) {
   const [month, setMonth] = useState(new Date(selected.getFullYear(), selected.getMonth(), 1))
   const first = new Date(month.getFullYear(), month.getMonth(), 1)
   const gridStart = new Date(first)
@@ -25,14 +25,14 @@ export function CalendarView({ logs, selected, onSelect, compact = false }: { lo
       </div>
       <div className="mt-5 grid grid-cols-7 text-center text-xs font-semibold text-muted">{WEEKDAYS.map((day, index) => <span key={`${day}-${index}`} className="py-2">{day}</span>)}</div>
       <div className="grid grid-cols-7 gap-y-1">{days.map((date) => {
-        const key = dateKey(date); const log = logs.find((item) => item.date === key)
+        const key = dateKey(date); const dayLogs = logs.filter((item) => item.date === key); const completed = dayLogs.some((item) => item.completed); const chosen = Boolean(choices[key])
         const isSelected = key === dateKey(selected); const inMonth = date.getMonth() === month.getMonth()
         return <button key={key} onClick={() => onSelect(date)} className="relative flex min-h-12 flex-col items-center justify-center gap-1 rounded-full text-sm">
           <span className={`grid h-8 w-8 place-items-center rounded-full tabular ${isSelected ? 'bg-accent font-bold text-ink' : inMonth ? 'text-white' : 'text-[#55555c]'}`}>{date.getDate()}</span>
-          {log && <span aria-label={log.completed ? 'Completed' : 'In progress'} className={`h-1.5 w-1.5 rounded-full ${log.completed ? 'bg-success' : 'bg-accent'}`} />}
+          {(dayLogs.length > 0 || chosen) && <span aria-label={completed ? 'Completed' : chosen ? 'Workout chosen' : 'In progress'} className={`h-1.5 w-1.5 rounded-full ${completed ? 'bg-success' : 'bg-accent'}`} />}
         </button>
       })}</div>
-      <div className="mt-5 flex flex-wrap gap-4 border-t border-line pt-4 text-xs text-muted"><span><i className="mr-2 inline-block h-2 w-2 rounded-full bg-accent" />In progress</span><span><i className="mr-2 inline-block h-2 w-2 rounded-full bg-success" />Finished</span><span className="ml-auto">Train on any day</span></div>
+      <div className="mt-5 flex flex-wrap gap-4 border-t border-line pt-4 text-xs text-muted"><span><i className="mr-2 inline-block h-2 w-2 rounded-full bg-accent" />Chosen / in progress</span><span><i className="mr-2 inline-block h-2 w-2 rounded-full bg-success" />Finished</span><span className="ml-auto">Choose any workout</span></div>
     </div>
   </section>
 }

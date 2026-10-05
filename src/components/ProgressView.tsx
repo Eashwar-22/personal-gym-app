@@ -28,7 +28,7 @@ export function ProgressView({ profile, logs }: { profile: Profile; logs: Workou
   const exportData = () => {
     try {
       const state = useAppStore.getState()
-      const blob = new Blob([JSON.stringify({ version: 1, exportedAt: new Date().toISOString(), profile: state.profile, logs: state.logs, bodyLogs: state.bodyLogs, exerciseSwaps: state.exerciseSwaps, lastExport: new Date().toISOString() }, null, 2)], { type: 'application/json' })
+      const blob = new Blob([JSON.stringify({ version: 1, exportedAt: new Date().toISOString(), profile: state.profile, logs: state.logs, bodyLogs: state.bodyLogs, exerciseSwaps: state.exerciseSwaps, workoutChoices: state.workoutChoices, lastExport: new Date().toISOString() }, null, 2)], { type: 'application/json' })
       const url = URL.createObjectURL(blob); const link = document.createElement('a'); link.href = url; link.download = `steadylift-backup-${dateKey(new Date())}.json`; link.click(); URL.revokeObjectURL(url); setLastExport(new Date().toISOString()); setMessage('Backup downloaded.')
     } catch { setMessage('Could not create the backup. Please try again.') }
   }

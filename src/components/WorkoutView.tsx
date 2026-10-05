@@ -1,13 +1,15 @@
 import { CalendarDays, ChevronRight, Flame, ShieldCheck, Trophy } from 'lucide-react'
 import { motion } from 'framer-motion'
 import type { Exercise, WorkoutDay, WorkoutLog } from '../types'
-import { exerciseMap } from '../data/plan'
-import { dateKey, longDate, workoutForDate } from '../utils/date'
+import { exerciseMap, plan } from '../data/plan'
+import { dateKey, longDate, suggestedWorkoutForDate, workoutForDate } from '../utils/date'
 import { streaks, workoutScore } from '../utils/stats'
 
-export function WorkoutView({ date, logs, swaps, onOpenCalendar, onExercise, onFinish }: { date: Date; logs: WorkoutLog[]; swaps: Record<string, string>; onOpenCalendar: () => void; onExercise: (exercise: Exercise, workout: WorkoutDay, originalId: string) => void; onFinish: (workout: WorkoutDay, score: number) => void }) {
-  const workout = workoutForDate(date, logs)
-  const log = logs.find((item) => item.date === dateKey(date))
+export function WorkoutView({ date, logs, swaps, choices, onChoose, onOpenCalendar, onExercise, onFinish }: { date: Date; logs: WorkoutLog[]; swaps: Record<string, string>; choices: Record<string, string>; onChoose: (workoutId: string) => void; onOpenCalendar: () => void; onExercise: (exercise: Exercise, workout: WorkoutDay, originalId: string) => void; onFinish: (workout: WorkoutDay, score: number) => void }) {
+  const key = dateKey(date)
+  const workout = workoutForDate(date, logs, choices)
+  const suggested = suggestedWorkoutForDate(date, logs)
+  const log = logs.find((item) => item.date === key && item.workoutId === workout.id)
   const streak = streaks(logs)
   const score = workout ? workoutScore(log?.exercises ?? [], workout.exercises.length, Boolean(log?.completed)) : 0
   const adjacent = [-1, 0, 1].map((offset) => { const item = new Date(date); item.setDate(date.getDate() + offset); return item })
@@ -20,6 +22,11 @@ export function WorkoutView({ date, logs, swaps, onOpenCalendar, onExercise, onF
 
     <div className="mx-auto max-w-lg px-5">
       <button onClick={onOpenCalendar} className="mt-5 flex min-h-12 items-center gap-2 rounded-full border border-[#3c4c75] bg-navy px-4 text-sm font-semibold text-[#dbe2fa]"><CalendarDays size={18} className="text-accent" />Date</button>
+      <section className="mt-4 rounded-card border border-line bg-panel p-4">
+        <div className="flex items-end justify-between gap-3"><div><p className="text-sm text-muted">Choose this day’s workout</p><h2 className="mt-1 text-lg font-semibold">What do you want to train?</h2></div>{!choices[key] && <span className="shrink-0 text-xs text-accent">Suggested: {suggested.name}</span>}</div>
+        <div className="mt-4 grid grid-cols-2 gap-2">{plan.map((option) => <button key={option.id} type="button" aria-pressed={option.id === workout.id} onClick={() => onChoose(option.id)} className={`min-h-14 rounded-2xl border px-3 text-left transition-colors ${option.id === workout.id ? 'border-accent bg-accent text-ink' : 'border-line bg-ink text-white'}`}><span className="block font-semibold">{option.name}</span><span className={`mt-0.5 block text-xs ${option.id === workout.id ? 'text-[#273353]' : 'text-muted'}`}>{option.name.startsWith('Upper') ? 'Upper body' : 'Lower body'}</span></button>)}</div>
+        <p className="mt-3 text-xs leading-5 text-muted">Choose freely each visit. Nothing is permanently assigned to a weekday.</p>
+      </section>
       <>
         <section className="mt-5 grid grid-cols-2 gap-3 rounded-card border border-line bg-panel p-4">
           <div className="flex items-center gap-3"><span className="grid h-10 w-10 place-items-center rounded-full bg-[#2a2f3f] text-accent"><Flame size={19} /></span><div><p className="text-xs text-muted">Last 7 days</p><p className="text-lg font-bold tabular">{streak.current} workout{streak.current === 1 ? '' : 's'}</p></div></div>

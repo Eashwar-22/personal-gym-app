@@ -16,6 +16,7 @@ type AppState = {
   bodyLogs: BodyLog[]
   lastExport?: string
   exerciseSwaps: Record<string, string>
+  workoutChoices: Record<string, string>
   setHydrated: (value: boolean) => void
   saveProfile: (profile: Profile) => void
   saveExerciseLog: (date: string, workoutId: string, exercise: ExerciseLog) => void
@@ -23,7 +24,8 @@ type AppState = {
   addBodyLog: (log: BodyLog) => void
   setLastExport: (date: string) => void
   swapExercise: (key: string, exerciseId: string) => void
-  importData: (data: Partial<Pick<AppState, 'profile' | 'logs' | 'bodyLogs' | 'lastExport'>>) => void
+  chooseWorkout: (date: string, workoutId: string) => void
+  importData: (data: Partial<Pick<AppState, 'profile' | 'logs' | 'bodyLogs' | 'exerciseSwaps' | 'workoutChoices' | 'lastExport'>>) => void
   resetAll: () => void
 }
 
@@ -32,6 +34,7 @@ export const useAppStore = create<AppState>()(persist((setState) => ({
   logs: [],
   bodyLogs: [],
   exerciseSwaps: {},
+  workoutChoices: {},
   setHydrated: (hydrated) => setState({ hydrated }),
   saveProfile: (profile) => setState({ profile }),
   saveExerciseLog: (date, workoutId, exercise) => setState((state) => {
@@ -43,11 +46,12 @@ export const useAppStore = create<AppState>()(persist((setState) => ({
   addBodyLog: (entry) => setState((state) => ({ bodyLogs: [...state.bodyLogs.filter((item) => item.date !== entry.date), entry].sort((a, b) => a.date.localeCompare(b.date)) })),
   setLastExport: (lastExport) => setState({ lastExport }),
   swapExercise: (key, exerciseId) => setState((state) => ({ exerciseSwaps: { ...state.exerciseSwaps, [key]: exerciseId } })),
+  chooseWorkout: (date, workoutId) => setState((state) => ({ workoutChoices: { ...state.workoutChoices, [date]: workoutId } })),
   importData: (data) => setState((state) => ({ ...state, ...data })),
-  resetAll: () => setState({ profile: undefined, logs: [], bodyLogs: [], exerciseSwaps: {}, lastExport: undefined }),
+  resetAll: () => setState({ profile: undefined, logs: [], bodyLogs: [], exerciseSwaps: {}, workoutChoices: {}, lastExport: undefined }),
 }), {
   name: 'steadylift-data',
   storage: createJSONStorage(() => idbStorage),
-  partialize: ({ profile, logs, bodyLogs, exerciseSwaps, lastExport }) => ({ profile, logs, bodyLogs, exerciseSwaps, lastExport }),
+  partialize: ({ profile, logs, bodyLogs, exerciseSwaps, workoutChoices, lastExport }) => ({ profile, logs, bodyLogs, exerciseSwaps, workoutChoices, lastExport }),
   onRehydrateStorage: () => (state) => state?.setHydrated(true),
 }))

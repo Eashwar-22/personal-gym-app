@@ -26,7 +26,7 @@ export function Onboarding({ onSave }: { onSave: (profile: Profile) => void }) {
             <div className="mt-2 flex items-center rounded-2xl border border-line bg-ink px-4"><input className="min-h-12 w-full bg-transparent text-lg font-semibold tabular outline-none" inputMode="decimal" type="number" value={height} onChange={(event) => setHeight(Number(event.target.value))} /><span>{units === 'metric' ? 'cm' : 'in'}</span></div>
           </label>
         </div>
-        <div className="mt-5 rounded-2xl border border-[#34405e] bg-navy p-4"><p className="font-semibold text-[#dbe2fa]">Train whenever it fits</p><p className="mt-1 text-sm leading-6 text-[#aeb9dd]">No weekdays are assigned. Each time you go, SteadyLift gives you the next workout in the rotation.</p></div>
+        <div className="mt-5 rounded-2xl border border-[#34405e] bg-navy p-4"><p className="font-semibold text-[#dbe2fa]">Train what you want, when you want</p><p className="mt-1 text-sm leading-6 text-[#aeb9dd]">No weekdays or workout categories are assigned. Pick Upper A, Lower A, Upper B, or Lower B each time you train.</p></div>
       </div>
     </section>
 
