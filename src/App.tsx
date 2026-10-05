@@ -7,6 +7,7 @@ import { CalendarView } from './components/CalendarView'
 import { WorkoutView } from './components/WorkoutView'
 import { ExerciseSheet } from './components/ExerciseSheet'
 import { LibraryView } from './components/LibraryView'
+import { ProgressView } from './components/ProgressView'
 import { useAppStore } from './store'
 import type { Exercise, Tab, WorkoutDay } from './types'
 import { dateKey } from './utils/date'
@@ -24,7 +25,7 @@ export default function App() {
     {tab === 'today' && <WorkoutView date={selectedDate} profile={profile} logs={logs} swaps={exerciseSwaps} onOpenCalendar={() => setCalendarOpen(true)} onExercise={(exercise, workout, originalId) => setActiveExercise({ exercise, workout, originalId })} onFinish={(workout, score) => completeWorkout(dateKey(selectedDate), workout.id, score)} />}
     {tab === 'calendar' && <CalendarView profile={profile} logs={logs} selected={selectedDate} onSelect={(date) => { setSelectedDate(date); setTab('today') }} />}
     {tab === 'library' && <LibraryView />}
-    {tab === 'progress' && <main className="p-6 pb-28"><h1 className="text-3xl font-bold">Progress</h1><p className="mt-2 text-muted">Your body and strength trends live here.</p></main>}
+    {tab === 'progress' && <ProgressView profile={profile} logs={logs} />}
     <BottomNav active={tab} onChange={setTab} />
 
     <AnimatePresence>{calendarOpen && <div className="fixed inset-0 z-50 flex items-end bg-black/60" onMouseDown={(event) => event.target === event.currentTarget && setCalendarOpen(false)}><div className="safe-bottom max-h-[92dvh] w-full overflow-y-auto rounded-t-[28px] bg-ink p-4"><div className="mx-auto mb-3 flex max-w-lg justify-end"><button aria-label="Close calendar" onClick={() => setCalendarOpen(false)} className="grid min-h-11 min-w-11 place-items-center rounded-full border border-line"><X size={20} /></button></div><div className="mx-auto max-w-lg"><CalendarView compact profile={profile} logs={logs} selected={selectedDate} onSelect={(date) => { setSelectedDate(date); setCalendarOpen(false) }} /></div></div></div>}</AnimatePresence>
