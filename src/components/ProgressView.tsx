@@ -3,7 +3,7 @@ import { useMemo, useRef, useState } from 'react'
 import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
 import { useAppStore } from '../store'
 import type { BodyLog, Profile, WorkoutLog } from '../types'
-import { dateKey, workoutForDate } from '../utils/date'
+import { dateKey } from '../utils/date'
 import { streaks } from '../utils/stats'
 
 type Measurement = 'weight' | 'waist' | 'chest' | 'arms' | 'thighs'
@@ -15,7 +15,7 @@ export function ProgressView({ profile, logs }: { profile: Profile; logs: Workou
   const [form, setForm] = useState<BodyLog>({ date: dateKey(new Date()), weight: profile.weight })
   const [message, setMessage] = useState('')
   const fileRef = useRef<HTMLInputElement>(null)
-  const streak = streaks(profile, logs)
+  const streak = streaks(logs)
   const reminder = !lastExport || (Date.now() - new Date(lastExport).getTime()) / 86400000 >= 30
 
   const weeklyWeight = useMemo(() => {
@@ -40,9 +40,9 @@ export function ProgressView({ profile, logs }: { profile: Profile; logs: Workou
   const monthDays = Array.from({ length: new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate() }, (_, i) => new Date(new Date().getFullYear(), new Date().getMonth(), i + 1))
   return <main className="px-5 pb-28 pt-7">
     <p className="text-sm font-semibold uppercase tracking-[.16em] text-accent">Body & consistency</p><h1 className="mt-1 text-3xl font-bold">Your progress</h1>
-    <section className="mt-5 grid grid-cols-2 gap-3"><div className="rounded-card border border-line bg-panel p-4"><Flame className="text-accent" size={20} /><p className="mt-3 text-3xl font-bold tabular">{streak.current}</p><p className="text-sm text-muted">Current streak</p></div><div className="rounded-card border border-line bg-panel p-4"><p className="text-sm text-muted">Longest</p><p className="mt-3 text-3xl font-bold tabular">{streak.longest}</p><p className="text-sm text-muted">planned workouts</p></div></section>
+    <section className="mt-5 grid grid-cols-2 gap-3"><div className="rounded-card border border-line bg-panel p-4"><Flame className="text-accent" size={20} /><p className="mt-3 text-3xl font-bold tabular">{streak.current}</p><p className="text-sm text-muted">Workouts in 7 days</p></div><div className="rounded-card border border-line bg-panel p-4"><p className="text-sm text-muted">Best week</p><p className="mt-3 text-3xl font-bold tabular">{streak.longest}</p><p className="text-sm text-muted">completed workouts</p></div></section>
 
-    <section className="mt-4 rounded-card border border-line bg-panel p-4"><div className="flex items-center justify-between"><h2 className="font-semibold">This month</h2><span className="text-xs text-muted">Training heatmap</span></div><div className="mt-4 grid grid-cols-7 gap-2">{monthDays.map((date) => { const planned = workoutForDate(date, profile); const log = logs.find((item) => item.date === dateKey(date)); return <span key={dateKey(date)} title={`${date.getDate()}`} className={`aspect-square rounded-md border ${!planned ? 'border-line bg-ink' : log?.completed ? 'border-accent bg-accent' : date < new Date() ? 'border-danger bg-[#3a2428]' : 'border-[#3c4c75] bg-navy'}`} /> })}</div></section>
+    <section className="mt-4 rounded-card border border-line bg-panel p-4"><div className="flex items-center justify-between"><h2 className="font-semibold">This month</h2><span className="text-xs text-muted">Training heatmap</span></div><div className="mt-4 grid grid-cols-7 gap-2">{monthDays.map((date) => { const log = logs.find((item) => item.date === dateKey(date)); return <span key={dateKey(date)} title={`${date.getDate()}`} className={`aspect-square rounded-md border ${log?.completed ? 'border-accent bg-accent' : log ? 'border-[#3c4c75] bg-navy' : 'border-line bg-ink'}`} /> })}</div></section>
 
     <section className="mt-4 rounded-card border border-line bg-panel p-4"><h2 className="font-semibold">Log measurements</h2><div className="mt-4 grid grid-cols-2 gap-3"><label className="text-xs text-muted">Date<input type="date" value={form.date} onChange={(event) => setForm({ ...form, date: event.target.value })} className="mt-1 min-h-12 w-full rounded-xl border border-line bg-ink px-3 text-base" /></label>{measurements.map((item) => <label key={item} className="text-xs capitalize text-muted">{item}<div className="mt-1 flex min-h-12 items-center rounded-xl border border-line bg-ink px-3"><input inputMode="decimal" type="number" value={form[item] ?? ''} onChange={(event) => setForm({ ...form, [item]: event.target.value === '' ? undefined : Number(event.target.value) })} className="min-w-0 flex-1 bg-transparent text-base outline-none" /><span className="text-sm">{item === 'weight' ? (profile.units === 'metric' ? 'kg' : 'lb') : (profile.units === 'metric' ? 'cm' : 'in')}</span></div></label>)}</div><button onClick={() => { addBodyLog(form); setMessage('Measurements saved.') }} className="mt-4 flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-accent font-bold text-ink"><Save size={18} />Save entry</button></section>
 

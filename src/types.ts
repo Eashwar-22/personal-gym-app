@@ -24,7 +24,6 @@ export type PlanExercise = {
 export type WorkoutDay = {
   id: string
   name: string
-  weekday: number
   exercises: PlanExercise[]
   cardio: string
 }
@@ -38,5 +37,5 @@ export type Profile = {
   weight: number
   height: number
   units: UnitSystem
-  weekdays: number[]
+  weekdays?: number[]
 }

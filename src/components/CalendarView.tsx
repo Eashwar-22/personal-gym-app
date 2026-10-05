@@ -1,11 +1,11 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { useState } from 'react'
-import type { Profile, WorkoutLog } from '../types'
-import { dateKey, longDate, workoutForDate } from '../utils/date'
+import type { WorkoutLog } from '../types'
+import { dateKey, longDate } from '../utils/date'
 
 const WEEKDAYS = ['S', 'M', 'T', 'W', 'T', 'F', 'Sa']
 
-export function CalendarView({ profile, logs, selected, onSelect, compact = false }: { profile: Profile; logs: WorkoutLog[]; selected: Date; onSelect: (date: Date) => void; compact?: boolean }) {
+export function CalendarView({ logs, selected, onSelect, compact = false }: { logs: WorkoutLog[]; selected: Date; onSelect: (date: Date) => void; compact?: boolean }) {
   const [month, setMonth] = useState(new Date(selected.getFullYear(), selected.getMonth(), 1))
   const first = new Date(month.getFullYear(), month.getMonth(), 1)
   const gridStart = new Date(first)
@@ -25,14 +25,14 @@ export function CalendarView({ profile, logs, selected, onSelect, compact = fals
       </div>
       <div className="mt-5 grid grid-cols-7 text-center text-xs font-semibold text-muted">{WEEKDAYS.map((day, index) => <span key={`${day}-${index}`} className="py-2">{day}</span>)}</div>
       <div className="grid grid-cols-7 gap-y-1">{days.map((date) => {
-        const key = dateKey(date); const log = logs.find((item) => item.date === key); const planned = workoutForDate(date, profile)
-        const isSelected = key === dateKey(selected); const inMonth = date.getMonth() === month.getMonth(); const missed = planned && date < new Date(new Date().setHours(0, 0, 0, 0)) && !log?.completed
+        const key = dateKey(date); const log = logs.find((item) => item.date === key)
+        const isSelected = key === dateKey(selected); const inMonth = date.getMonth() === month.getMonth()
         return <button key={key} onClick={() => onSelect(date)} className="relative flex min-h-12 flex-col items-center justify-center gap-1 rounded-full text-sm">
           <span className={`grid h-8 w-8 place-items-center rounded-full tabular ${isSelected ? 'bg-accent font-bold text-ink' : inMonth ? 'text-white' : 'text-[#55555c]'}`}>{date.getDate()}</span>
-          {planned && <span aria-label={log?.completed ? 'Completed' : missed ? 'Missed' : 'Planned'} className={`h-1.5 w-1.5 rounded-full ${log?.completed ? 'bg-success' : missed ? 'bg-danger' : 'bg-accent'}`} />}
+          {log && <span aria-label={log.completed ? 'Completed' : 'In progress'} className={`h-1.5 w-1.5 rounded-full ${log.completed ? 'bg-success' : 'bg-accent'}`} />}
         </button>
       })}</div>
-      <div className="mt-5 flex flex-wrap gap-4 border-t border-line pt-4 text-xs text-muted"><span><i className="mr-2 inline-block h-2 w-2 rounded-full bg-accent" />Planned</span><span><i className="mr-2 inline-block h-2 w-2 rounded-full bg-success" />Done</span><span><i className="mr-2 inline-block h-2 w-2 rounded-full bg-danger" />Missed</span></div>
+      <div className="mt-5 flex flex-wrap gap-4 border-t border-line pt-4 text-xs text-muted"><span><i className="mr-2 inline-block h-2 w-2 rounded-full bg-accent" />In progress</span><span><i className="mr-2 inline-block h-2 w-2 rounded-full bg-success" />Finished</span><span className="ml-auto">Train on any day</span></div>
     </div>
   </section>
 }

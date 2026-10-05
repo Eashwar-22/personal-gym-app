@@ -1,5 +1,4 @@
-import type { ExerciseLog, Profile, WorkoutLog } from '../types'
-import { dateKey, workoutForDate } from './date'
+import type { ExerciseLog, WorkoutLog } from '../types'
 
 export const exerciseScore = (log: ExerciseLog) => {
   if (!log.completed) return 0
@@ -15,17 +14,11 @@ export const isPersonalBest = (sets: ExerciseLog['sets'], exerciseId: string, da
   return previousBest > 0 && currentBest > previousBest
 }
 
-export const streaks = (profile: Profile, logs: WorkoutLog[]) => {
-  const completed = new Set(logs.filter((log) => log.completed).map((log) => log.date))
-  const cursor = new Date(); cursor.setHours(0, 0, 0, 0)
-  const dates: string[] = []
-  for (let count = 0; count < 730; count++) {
-    if (workoutForDate(cursor, profile)) dates.unshift(dateKey(cursor))
-    cursor.setDate(cursor.getDate() - 1)
-  }
-  let longest = 0; let run = 0
-  for (const key of dates) { if (completed.has(key)) { run += 1; longest = Math.max(longest, run) } else run = 0 }
-  let current = 0
-  for (let index = dates.length - 1; index >= 0; index--) { if (completed.has(dates[index])) current += 1; else break }
-  return { current, longest }
+export const streaks = (logs: WorkoutLog[]) => {
+  const completed = logs.filter((log) => log.completed)
+  const sevenDaysAgo = new Date(); sevenDaysAgo.setHours(0, 0, 0, 0); sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 6)
+  const current = completed.filter((log) => new Date(`${log.date}T12:00:00`) >= sevenDaysAgo).length
+  const weeks = new Map<string, number>()
+  completed.forEach((log) => { const date = new Date(`${log.date}T12:00:00`); const monday = new Date(date); const day = (date.getDay() + 6) % 7; monday.setDate(date.getDate() - day); const key = monday.toISOString().slice(0, 10); weeks.set(key, (weeks.get(key) ?? 0) + 1) })
+  return { current, longest: Math.max(0, ...weeks.values()) }
 }

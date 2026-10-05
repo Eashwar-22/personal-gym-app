@@ -1,5 +1,5 @@
 import { plan } from '../data/plan'
-import type { Profile, WorkoutDay } from '../types'
+import type { WorkoutDay, WorkoutLog } from '../types'
 
 export const dateKey = (date: Date) => {
   const year = date.getFullYear()
@@ -13,9 +13,12 @@ export const fromDateKey = (key: string) => {
   return new Date(year, month - 1, day)
 }
 
-export const workoutForDate = (date: Date, profile: Profile): WorkoutDay | undefined => {
-  const index = profile.weekdays.indexOf(date.getDay())
-  return index >= 0 ? plan[index] : undefined
+export const workoutForDate = (date: Date, logs: WorkoutLog[]): WorkoutDay => {
+  const key = dateKey(date)
+  const existing = logs.find((log) => log.date === key)
+  if (existing) return plan.find((workout) => workout.id === existing.workoutId) ?? plan[0]
+  const completedBefore = logs.filter((log) => log.completed && log.date < key).length
+  return plan[completedBefore % plan.length]
 }
 
 export const longDate = (date: Date) => new Intl.DateTimeFormat('en', { weekday: 'long', month: 'long', day: 'numeric' }).format(date)

@@ -1,6 +1,6 @@
 [
   {
-    "id": "upper-a", "name": "Upper A", "weekday": 1, "cardio": "10 min easy incline walk",
+    "id": "upper-a", "name": "Upper A", "cardio": "10 min easy incline walk",
     "exercises": [
       { "exerciseId": "Machine_Bench_Press", "sets": 3, "minReps": 8, "maxReps": 10 },
       { "exerciseId": "Seated_Cable_Rows", "sets": 3, "minReps": 8, "maxReps": 10 },
@@ -11,7 +11,7 @@
     ]
   },
   {
-    "id": "lower-a", "name": "Lower A", "weekday": 2, "cardio": "10 min relaxed bike",
+    "id": "lower-a", "name": "Lower A", "cardio": "10 min relaxed bike",
     "exercises": [
       { "exerciseId": "Leg_Press", "sets": 3, "minReps": 8, "maxReps": 10 },
       { "exerciseId": "Seated_Leg_Curl", "sets": 3, "minReps": 8, "maxReps": 10 },
@@ -22,7 +22,7 @@
     ]
   },
   {
-    "id": "upper-b", "name": "Upper B", "weekday": 4, "cardio": "10 min easy elliptical",
+    "id": "upper-b", "name": "Upper B", "cardio": "10 min easy elliptical",
     "exercises": [
       { "exerciseId": "Dumbbell_Bench_Press_with_Neutral_Grip", "sets": 3, "minReps": 8, "maxReps": 10 },
       { "exerciseId": "Leverage_Iso_Row", "sets": 3, "minReps": 8, "maxReps": 10 },
@@ -33,7 +33,7 @@
     ]
   },
   {
-    "id": "lower-b", "name": "Lower B", "weekday": 5, "cardio": "10 min comfortable treadmill walk",
+    "id": "lower-b", "name": "Lower B", "cardio": "10 min comfortable treadmill walk",
     "exercises": [
       { "exerciseId": "Dumbbell_Squat", "sets": 3, "minReps": 8, "maxReps": 10 },
       { "exerciseId": "Stiff-Legged_Dumbbell_Deadlift", "sets": 3, "minReps": 8, "maxReps": 10 },
