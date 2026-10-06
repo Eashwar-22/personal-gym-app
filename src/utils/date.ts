@@ -19,13 +19,13 @@ export const suggestedWorkoutForDate = (date: Date, logs: WorkoutLog[]): Workout
   return plan[completedBefore % plan.length]
 }
 
-export const workoutForDate = (date: Date, logs: WorkoutLog[], choices: Record<string, string> = {}, customWorkouts: Record<string, WorkoutDay> = {}): WorkoutDay => {
+export const workoutForDate = (date: Date, logs: WorkoutLog[], choices: Record<string, string> = {}, customWorkouts: Record<string, WorkoutDay> = {}, savedRoutines: Record<string, WorkoutDay> = {}): WorkoutDay => {
   const key = dateKey(date)
   const chosenId = choices[key]
   const custom = customWorkouts[key]
-  if (chosenId) return custom?.id === chosenId ? custom : plan.find((workout) => workout.id === chosenId) ?? plan[0]
+  if (chosenId) return custom?.id === chosenId ? custom : savedRoutines[chosenId] ?? plan.find((workout) => workout.id === chosenId) ?? plan[0]
   const existing = logs.find((log) => log.date === key)
-  if (existing) return custom?.id === existing.workoutId ? custom : plan.find((workout) => workout.id === existing.workoutId) ?? plan[0]
+  if (existing) return custom?.id === existing.workoutId ? custom : savedRoutines[existing.workoutId] ?? plan.find((workout) => workout.id === existing.workoutId) ?? plan[0]
   return suggestedWorkoutForDate(date, logs)
 }
 

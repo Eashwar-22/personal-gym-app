@@ -6,7 +6,7 @@ export type Exercise = {
   name: string
   group: string
   equipment: string
-  level: 'beginner'
+  level: 'beginner' | 'intermediate'
   image?: string
   images?: string[]
   sourceUrl?: string

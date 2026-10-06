@@ -5,10 +5,10 @@ SteadyLift is a private, offline-first personal gym tracker for a beginner retur
 ## What it includes
 
 - One-time onboarding for units and body stats, with no assigned training weekdays
-- Four beginner-friendly workout templates plus a per-date custom routine builder for choosing exercises, order, sets, and rep ranges
+- Four beginner-friendly workout templates plus a reusable custom routine library for choosing exercises, order, sets, and rep ranges on any day
 - Shoulder-friendly external rotation, rear-delt, neutral-grip, machine, and cable choices
 - Auto-saved workout drafts, typed weights and reps, adjustable set counts, exercise notes, a configurable rest timer, same-muscle swaps, scoring, PBs, and streaks
-- A searchable 62-exercise offline library with locally bundled looping start/finish demonstrations, pause controls, and source links
+- A searchable 77-exercise library with locally bundled looping start/finish demonstrations for most moves, plus source links for all moves
 - Weight weekly averages plus waist, chest, arms, and thigh charts
 - Progressive-overload suggestions based on the previous session and estimated 1RM history
 - JSON backup/restore with a 30-day export reminder

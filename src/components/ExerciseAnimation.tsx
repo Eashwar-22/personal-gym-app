@@ -14,7 +14,7 @@ export function ExerciseAnimation({ exercise, compact = false }: { exercise: Exe
     return () => window.clearInterval(timer)
   }, [exercise.id, frames.length, paused])
 
-  if (!frames.length) return <div className="grid aspect-video place-items-center rounded-card border border-line bg-panel text-sm text-muted">No demonstration available</div>
+  if (!frames.length) return <div className="grid aspect-video place-items-center rounded-card border border-line bg-panel p-5 text-center text-sm text-muted"><div><p>Offline demonstration unavailable for this move.</p>{exercise.sourceUrl && <a href={exercise.sourceUrl} target="_blank" rel="noreferrer" className="mt-3 inline-flex min-h-11 items-center gap-2 rounded-full border border-accent px-4 font-semibold text-accent">View demonstration <ExternalLink size={15} /></a>}</div></div>
 
   return <figure className="overflow-hidden rounded-card border border-line bg-white">
     <div className={`relative w-full ${compact ? 'aspect-[4/3]' : 'aspect-video'}`}>

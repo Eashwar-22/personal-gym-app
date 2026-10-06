@@ -1111,5 +1111,93 @@
       "Standing upright with the torso straight and a very small inclination forward, bring the upper arms close to your body and perpendicular to the floor. The forearms should be pointing up towards the pulley as they hold the bar. This is your starting position."
     ],
     "shoulderFriendly": false
+  },
+  {
+    "id": "Face_Pull", "name": "Face Pull", "group": "shoulders", "equipment": "cable", "level": "intermediate",
+    "image": "exercises/Face_Pull.jpg", "images": ["exercises/Face_Pull.jpg", "exercises/Face_Pull_end.jpg"],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Face_Pull",
+    "notes": ["Set the rope near face height and step back until the cable is taut.", "Pull toward your face with elbows high, using a light weight and steady control.", "If this bothers your recovering shoulder, stop and ask a clinician or trainer for a suitable variation."], "shoulderFriendly": false
+  },
+  {
+    "id": "Band_Assisted_Pull-Up", "name": "Assisted Pull-Up", "group": "lats", "equipment": "assistance band", "level": "intermediate",
+    "image": "exercises/Band_Assisted_Pull-Up.jpg", "images": ["exercises/Band_Assisted_Pull-Up.jpg", "exercises/Band_Assisted_Pull-Up_end.jpg"],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Band_Assisted_Pull-Up",
+    "notes": ["Secure a band to the bar and place one foot or knee in it.", "Pull up without swinging, then lower slowly.", "Start with enough assistance to keep the movement controlled; skip it if hanging hurts your shoulder."], "shoulderFriendly": false
+  },
+  {
+    "id": "Landmine_Press", "name": "Landmine Press", "group": "shoulders", "equipment": "landmine", "level": "intermediate",
+    "sourceUrl": "https://www.muscleandstrength.com/exercises/single-arm-landmine-press",
+    "notes": ["Hold the end of the bar near your shoulder and stand with your ribs down.", "Press forward and upward in a smooth arc, then lower slowly.", "Begin with a very light load and use only a pain-free range while your shoulder recovers."], "shoulderFriendly": false
+  },
+  {
+    "id": "Leverage_Shoulder_Press", "name": "Machine Shoulder Press", "group": "shoulders", "equipment": "machine", "level": "beginner",
+    "image": "exercises/Leverage_Shoulder_Press.jpg", "images": ["exercises/Leverage_Shoulder_Press.jpg", "exercises/Leverage_Shoulder_Press_end.jpg"],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Leverage_Shoulder_Press",
+    "notes": ["Adjust the seat so the handles begin around shoulder height.", "Press smoothly without shrugging, and lower under control.", "Use a light load and a pain-free range; avoid overhead pressing if your shoulder is not ready."], "shoulderFriendly": false
+  },
+  {
+    "id": "Side_Lateral_Raise", "name": "Dumbbell Lateral Raise", "group": "shoulders", "equipment": "dumbbell", "level": "beginner",
+    "image": "exercises/Side_Lateral_Raise.jpg", "images": ["exercises/Side_Lateral_Raise.jpg", "exercises/Side_Lateral_Raise_end.jpg"],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Side_Lateral_Raise",
+    "notes": ["Keep a soft bend in your elbows and use light dumbbells.", "Raise your arms out to the sides only as high as feels comfortable, then lower slowly.", "Do not swing or push through shoulder pain."], "shoulderFriendly": false
+  },
+  {
+    "id": "Cable_Seated_Lateral_Raise", "name": "Cable Lateral Raise", "group": "shoulders", "equipment": "cable", "level": "beginner",
+    "image": "exercises/Cable_Seated_Lateral_Raise.jpg", "images": ["exercises/Cable_Seated_Lateral_Raise.jpg", "exercises/Cable_Seated_Lateral_Raise_end.jpg"],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Cable_Seated_Lateral_Raise",
+    "notes": ["The demonstration shows a seated cable variation.", "Lift gently out to the side and lower with control.", "Keep the resistance light and stop if your recovering shoulder hurts."], "shoulderFriendly": false
+  },
+  {
+    "id": "Barbell_Hip_Thrust", "name": "Hip Thrust", "group": "glutes", "equipment": "barbell", "level": "intermediate",
+    "image": "exercises/Barbell_Hip_Thrust.jpg", "images": ["exercises/Barbell_Hip_Thrust.jpg", "exercises/Barbell_Hip_Thrust_end.jpg"],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Barbell_Hip_Thrust",
+    "notes": ["The demonstration uses a barbell, but start without weight to learn the motion.", "Place your upper back on a stable bench and keep your feet flat.", "Drive through your feet until your hips rise, then lower slowly without arching your back."], "shoulderFriendly": false
+  },
+  {
+    "id": "Bulgarian_Split_Squat", "name": "Bulgarian Split Squat", "group": "quadriceps", "equipment": "bodyweight or dumbbell", "level": "intermediate",
+    "image": "exercises/Split_Squat_with_Dumbbells.jpg", "images": ["exercises/Split_Squat_with_Dumbbells.jpg", "exercises/Split_Squat_with_Dumbbells_end.jpg"],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Split_Squat_with_Dumbbells",
+    "notes": ["Rest your rear foot on a low bench and keep most of your weight on the front leg.", "Start without dumbbells and lower only as far as you can balance comfortably.", "Press through the front foot to stand; hold a rail for balance if needed."], "shoulderFriendly": false
+  },
+  {
+    "id": "Romanian_Deadlift", "name": "Romanian Deadlift", "group": "hamstrings", "equipment": "barbell", "level": "intermediate",
+    "image": "exercises/Romanian_Deadlift.jpg", "images": ["exercises/Romanian_Deadlift.jpg", "exercises/Romanian_Deadlift_end.jpg"],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Romanian_Deadlift",
+    "notes": ["Begin light with knees softly bent and the bar close to your legs.", "Push your hips back while keeping your back neutral.", "Stand by driving your feet into the floor and bringing your hips forward."], "shoulderFriendly": false
+  },
+  {
+    "id": "Goblet_Squat", "name": "Goblet Squat", "group": "quadriceps", "equipment": "kettlebell", "level": "beginner",
+    "image": "exercises/Goblet_Squat.jpg", "images": ["exercises/Goblet_Squat.jpg", "exercises/Goblet_Squat_end.jpg"],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Goblet_Squat",
+    "notes": ["The demonstration uses a kettlebell; begin with a light one.", "Hold it close to your chest and squat between your knees.", "Stand tall without leaning far forward."], "shoulderFriendly": false
+  },
+  {
+    "id": "Hack_Squat", "name": "Hack Squat", "group": "quadriceps", "equipment": "machine", "level": "beginner",
+    "image": "exercises/Hack_Squat.jpg", "images": ["exercises/Hack_Squat.jpg", "exercises/Hack_Squat_end.jpg"],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Hack_Squat",
+    "notes": ["Set up the machine so your back rests firmly against the pad.", "Lower under control to a comfortable depth, then press through your feet.", "Use a light load until the movement feels familiar."], "shoulderFriendly": false
+  },
+  {
+    "id": "Hanging_Knee_Raise", "name": "Hanging Knee Raise", "group": "abdominals", "equipment": "pull-up bar", "level": "intermediate",
+    "sourceUrl": "https://www.puregym.com/exercises/abs/hanging-knee-raises/",
+    "notes": ["Hang with a comfortable grip and keep your body still.", "Lift bent knees toward your chest, then lower slowly without swinging.", "If hanging stresses your shoulder, choose a floor-based core exercise instead."], "shoulderFriendly": false
+  },
+  {
+    "id": "EZ-Bar_Curl", "name": "EZ Bar Curl", "group": "biceps", "equipment": "EZ bar", "level": "beginner",
+    "image": "exercises/EZ-Bar_Curl.jpg", "images": ["exercises/EZ-Bar_Curl.jpg", "exercises/EZ-Bar_Curl_end.jpg"],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/EZ-Bar_Curl",
+    "notes": ["Hold the EZ bar with a comfortable grip and keep your elbows close to your sides.", "Curl without swinging your torso, then lower slowly."], "shoulderFriendly": false
+  },
+  {
+    "id": "Incline_Dumbbell_Curl", "name": "Incline Dumbbell Curl", "group": "biceps", "equipment": "dumbbell", "level": "beginner",
+    "image": "exercises/Incline_Dumbbell_Curl.jpg", "images": ["exercises/Incline_Dumbbell_Curl.jpg", "exercises/Incline_Dumbbell_Curl_end.jpg"],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Incline_Dumbbell_Curl",
+    "notes": ["Sit back on an incline bench with light dumbbells hanging by your sides.", "Keep your upper arms still as you curl, then lower slowly.", "If the bench position stretches your recovering shoulder uncomfortably, skip this version."], "shoulderFriendly": false
+  },
+  {
+    "id": "Cable_Rope_Overhead_Triceps_Extension", "name": "Overhead Cable Triceps Extension", "group": "triceps", "equipment": "cable", "level": "intermediate",
+    "image": "exercises/Cable_Rope_Overhead_Triceps_Extension.jpg", "images": ["exercises/Cable_Rope_Overhead_Triceps_Extension.jpg", "exercises/Cable_Rope_Overhead_Triceps_Extension_end.jpg"],
+    "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Cable_Rope_Overhead_Triceps_Extension",
+    "notes": ["Face away from the cable with the rope held overhead.", "Extend your elbows smoothly, then return under control.", "Avoid this move if the overhead position causes shoulder discomfort."], "shoulderFriendly": false
   }
 ]

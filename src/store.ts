@@ -34,6 +34,11 @@ const durableBrowserStorage: StateStorage = {
 }
 
 const savedNow = () => new Date().toISOString()
+const routinesFromDates = (workouts: Record<string, WorkoutDay> = {}) =>
+  Object.values(workouts).reduce<Record<string, WorkoutDay>>((all, workout) => {
+    if (workout?.id && !all[workout.id]) all[workout.id] = workout
+    return all
+  }, {})
 
 type AppState = {
   hydrated: boolean
@@ -44,6 +49,7 @@ type AppState = {
   exerciseSwaps: Record<string, string>
   workoutChoices: Record<string, string>
   customWorkouts: Record<string, WorkoutDay>
+  savedRoutines: Record<string, WorkoutDay>
   lastSavedAt?: string
   storageWarning?: string
   setHydrated: (value: boolean) => void
@@ -55,7 +61,7 @@ type AppState = {
   swapExercise: (key: string, exerciseId: string) => void
   chooseWorkout: (date: string, workoutId: string) => void
   saveCustomWorkout: (date: string, workout: WorkoutDay) => void
-  importData: (data: Partial<Pick<AppState, 'profile' | 'logs' | 'bodyLogs' | 'exerciseSwaps' | 'workoutChoices' | 'customWorkouts' | 'lastExport' | 'lastSavedAt'>>) => void
+  importData: (data: Partial<Pick<AppState, 'profile' | 'logs' | 'bodyLogs' | 'exerciseSwaps' | 'workoutChoices' | 'customWorkouts' | 'savedRoutines' | 'lastExport' | 'lastSavedAt'>>) => void
   resetAll: () => void
 }
 
@@ -66,6 +72,7 @@ export const useAppStore = create<AppState>()(persist((setState) => ({
   exerciseSwaps: {},
   workoutChoices: {},
   customWorkouts: {},
+  savedRoutines: {},
   setHydrated: (hydrated) => setState({ hydrated }),
   saveProfile: (profile) => setState({ profile, lastSavedAt: savedNow() }),
   saveExerciseLog: (date, workoutId, exercise) => setState((state) => {
@@ -78,16 +85,17 @@ export const useAppStore = create<AppState>()(persist((setState) => ({
   addBodyLog: (entry) => setState((state) => ({ bodyLogs: [...state.bodyLogs.filter((item) => item.date !== entry.date), entry].sort((a, b) => a.date.localeCompare(b.date)), lastSavedAt: savedNow() })),
   setLastExport: (lastExport) => setState({ lastExport, lastSavedAt: savedNow() }),
   swapExercise: (key, exerciseId) => setState((state) => ({ exerciseSwaps: { ...state.exerciseSwaps, [key]: exerciseId }, lastSavedAt: savedNow() })),
-  chooseWorkout: (date, workoutId) => setState((state) => ({ workoutChoices: { ...state.workoutChoices, [date]: workoutId }, lastSavedAt: savedNow() })),
-  saveCustomWorkout: (date, workout) => setState((state) => {
-    const exerciseIds = new Set(workout.exercises.map((item) => item.exerciseId))
-    return {
-      customWorkouts: { ...state.customWorkouts, [date]: workout },
-      workoutChoices: { ...state.workoutChoices, [date]: workout.id },
-      logs: state.logs.map((log) => log.date === date && log.workoutId === workout.id ? { ...log, exercises: log.exercises.filter((entry) => exerciseIds.has(entry.exerciseId)), completed: false, score: 0 } : log),
-      lastSavedAt: savedNow(),
-    }
-  }),
+  chooseWorkout: (date, workoutId) => setState((state) => ({
+    workoutChoices: { ...state.workoutChoices, [date]: workoutId },
+    customWorkouts: state.savedRoutines[workoutId] ? { ...state.customWorkouts, [date]: state.customWorkouts[date]?.id === workoutId ? state.customWorkouts[date] : { ...state.savedRoutines[workoutId], exercises: state.savedRoutines[workoutId].exercises.map((item) => ({ ...item })) } } : state.customWorkouts,
+    lastSavedAt: savedNow(),
+  })),
+  saveCustomWorkout: (date, workout) => setState((state) => ({
+    savedRoutines: { ...state.savedRoutines, [workout.id]: workout },
+    customWorkouts: { ...state.customWorkouts, [date]: { ...workout, exercises: workout.exercises.map((item) => ({ ...item })) } },
+    workoutChoices: { ...state.workoutChoices, [date]: workout.id },
+    lastSavedAt: savedNow(),
+  })),
   importData: (data) => setState((state) => ({
     profile: data.profile ?? state.profile,
     logs: Array.isArray(data.logs) ? data.logs : state.logs,
@@ -95,17 +103,20 @@ export const useAppStore = create<AppState>()(persist((setState) => ({
     exerciseSwaps: data.exerciseSwaps && typeof data.exerciseSwaps === 'object' ? data.exerciseSwaps : state.exerciseSwaps,
     workoutChoices: data.workoutChoices && typeof data.workoutChoices === 'object' ? data.workoutChoices : state.workoutChoices,
     customWorkouts: data.customWorkouts && typeof data.customWorkouts === 'object' ? data.customWorkouts : state.customWorkouts,
+    savedRoutines: { ...routinesFromDates(data.customWorkouts ?? state.customWorkouts), ...(data.savedRoutines && typeof data.savedRoutines === 'object' ? data.savedRoutines : {}) },
     lastExport: data.lastExport ?? state.lastExport,
     lastSavedAt: savedNow(),
   })),
-  resetAll: () => setState({ profile: undefined, logs: [], bodyLogs: [], exerciseSwaps: {}, workoutChoices: {}, customWorkouts: {}, lastExport: undefined, lastSavedAt: savedNow() }),
+  resetAll: () => setState({ profile: undefined, logs: [], bodyLogs: [], exerciseSwaps: {}, workoutChoices: {}, customWorkouts: {}, savedRoutines: {}, lastExport: undefined, lastSavedAt: savedNow() }),
 }), {
   name: 'steadylift-data',
   storage: createJSONStorage(() => durableBrowserStorage),
-  partialize: ({ profile, logs, bodyLogs, exerciseSwaps, workoutChoices, customWorkouts, lastExport, lastSavedAt }) => ({ profile, logs, bodyLogs, exerciseSwaps, workoutChoices, customWorkouts, lastExport, lastSavedAt }),
+  partialize: ({ profile, logs, bodyLogs, exerciseSwaps, workoutChoices, customWorkouts, savedRoutines, lastExport, lastSavedAt }) => ({ profile, logs, bodyLogs, exerciseSwaps, workoutChoices, customWorkouts, savedRoutines, lastExport, lastSavedAt }),
   onRehydrateStorage: () => (state, error) => {
     if (state) {
       state.setHydrated(true)
+      const legacy = routinesFromDates(state.customWorkouts)
+      if (Object.keys(legacy).some((id) => !state.savedRoutines?.[id])) queueMicrotask(() => useAppStore.setState((current) => ({ savedRoutines: { ...legacy, ...current.savedRoutines } })))
       if (error) queueMicrotask(() => useAppStore.setState({ storageWarning: 'Browser storage could not be opened. Export your data before closing the app.' }))
     }
     else queueMicrotask(() => useAppStore.setState({ hydrated: true, storageWarning: error ? 'Browser storage could not be opened. Export your data before closing the app.' : undefined }))
