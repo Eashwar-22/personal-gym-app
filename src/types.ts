@@ -29,7 +29,7 @@ export type WorkoutDay = {
 }
 
 export type LoggedSet = { reps: number; weight: number; done: boolean }
-export type ExerciseLog = { exerciseId: string; sets: LoggedSet[]; completed: boolean; pb?: boolean }
+export type ExerciseLog = { exerciseId: string; sets: LoggedSet[]; completed: boolean; pb?: boolean; note?: string }
 export type WorkoutLog = { date: string; workoutId: string; exercises: ExerciseLog[]; completed: boolean; score: number }
 export type BodyLog = { date: string; weight: number; waist?: number; chest?: number; arms?: number; thighs?: number }
 
@@ -37,5 +37,6 @@ export type Profile = {
   weight: number
   height: number
   units: UnitSystem
+  restSeconds?: number
   weekdays?: number[]
 }

@@ -32,7 +32,7 @@ export function Onboarding({ onSave }: { onSave: (profile: Profile) => void }) {
 
     <section className="mt-8">
       <div className="mb-5 flex gap-3 rounded-2xl border border-[#34405e] bg-navy p-4 text-sm leading-6 text-[#c9d2f3]"><ShieldCheck className="mt-0.5 shrink-0 text-accent" size={20} /><span>Keep every rep pain-free. If your recovering shoulder hurts, stop and check with your clinician or physio.</span></div>
-      <button onClick={() => onSave({ weight, height, units })} className="min-h-14 w-full rounded-full bg-accent px-6 text-base font-bold text-ink">Start my plan</button>
+      <button onClick={() => onSave({ weight, height, units, restSeconds: 90 })} className="min-h-14 w-full rounded-full bg-accent px-6 text-base font-bold text-ink">Start my plan</button>
     </section>
   </main>
 }

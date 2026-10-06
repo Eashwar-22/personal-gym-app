@@ -1,19 +1,21 @@
-import { Download, Flame, Save, Upload } from 'lucide-react'
+import { Database, Download, Flame, Save, ShieldCheck, Upload } from 'lucide-react'
 import { useMemo, useRef, useState } from 'react'
 import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
 import { useAppStore } from '../store'
 import type { BodyLog, Profile, WorkoutLog } from '../types'
 import { dateKey } from '../utils/date'
 import { streaks } from '../utils/stats'
+import { requestPersistentStorage } from '../utils/storage'
 
 type Measurement = 'weight' | 'waist' | 'chest' | 'arms' | 'thighs'
 const measurements: Measurement[] = ['weight', 'waist', 'chest', 'arms', 'thighs']
 
 export function ProgressView({ profile, logs }: { profile: Profile; logs: WorkoutLog[] }) {
-  const { bodyLogs, addBodyLog, setLastExport, importData, lastExport } = useAppStore()
+  const { bodyLogs, addBodyLog, setLastExport, importData, lastExport, customWorkouts, lastSavedAt, storageWarning, saveProfile } = useAppStore()
   const [metric, setMetric] = useState<Measurement>('weight')
   const [form, setForm] = useState<BodyLog>({ date: dateKey(new Date()), weight: profile.weight })
   const [message, setMessage] = useState('')
+  const [restSeconds, setRestSeconds] = useState(profile.restSeconds ?? 90)
   const fileRef = useRef<HTMLInputElement>(null)
   const streak = streaks(logs)
   const reminder = !lastExport || (Date.now() - new Date(lastExport).getTime()) / 86400000 >= 30
@@ -28,7 +30,7 @@ export function ProgressView({ profile, logs }: { profile: Profile; logs: Workou
   const exportData = () => {
     try {
       const state = useAppStore.getState()
-      const blob = new Blob([JSON.stringify({ version: 1, exportedAt: new Date().toISOString(), profile: state.profile, logs: state.logs, bodyLogs: state.bodyLogs, exerciseSwaps: state.exerciseSwaps, workoutChoices: state.workoutChoices, lastExport: new Date().toISOString() }, null, 2)], { type: 'application/json' })
+      const blob = new Blob([JSON.stringify({ version: 2, exportedAt: new Date().toISOString(), profile: state.profile, logs: state.logs, bodyLogs: state.bodyLogs, exerciseSwaps: state.exerciseSwaps, workoutChoices: state.workoutChoices, customWorkouts: state.customWorkouts, lastSavedAt: state.lastSavedAt, lastExport: new Date().toISOString() }, null, 2)], { type: 'application/json' })
       const url = URL.createObjectURL(blob); const link = document.createElement('a'); link.href = url; link.download = `steadylift-backup-${dateKey(new Date())}.json`; link.click(); URL.revokeObjectURL(url); setLastExport(new Date().toISOString()); setMessage('Backup downloaded.')
     } catch { setMessage('Could not create the backup. Please try again.') }
   }
@@ -48,7 +50,11 @@ export function ProgressView({ profile, logs }: { profile: Profile; logs: Workou
 
     <section className="mt-4 rounded-card border border-line bg-panel p-4"><div className="scrollbar-none flex gap-2 overflow-x-auto">{measurements.map((item) => <button key={item} onClick={() => setMetric(item)} className={`min-h-10 shrink-0 rounded-full px-4 text-sm font-semibold capitalize ${metric === item ? 'bg-accent text-ink' : 'border border-line text-muted'}`}>{item}{item === 'weight' ? ' average' : ''}</button>)}</div><div className="mt-5 h-56">{chartData.length ? <ResponsiveContainer width="100%" height="100%"><LineChart data={chartData} margin={{ top: 8, right: 8, left: -22, bottom: 0 }}><CartesianGrid stroke="#2E2E33" vertical={false} /><XAxis dataKey="date" tick={{ fill: '#92929B', fontSize: 11 }} tickLine={false} axisLine={false} /><YAxis tick={{ fill: '#92929B', fontSize: 11 }} tickLine={false} axisLine={false} domain={['auto', 'auto']} /><Tooltip contentStyle={{ background: '#18181B', border: '1px solid #2E2E33', borderRadius: 12 }} /><Line type="monotone" dataKey={metric} stroke="#7490EA" strokeWidth={3} dot={{ r: 3, fill: '#7490EA' }} isAnimationActive={false} /></LineChart></ResponsiveContainer> : <div className="grid h-full place-items-center text-center"><div><p className="font-semibold">No {metric} trend yet</p><p className="mt-1 text-sm text-muted">Save an entry to start the chart.</p></div></div>}</div></section>
 
-    <section className={`mt-4 rounded-card border p-4 ${reminder ? 'border-[#5369a3] bg-navy' : 'border-line bg-panel'}`}><h2 className="font-semibold">Backup your data</h2><p className="mt-1 text-sm leading-6 text-muted">Everything stays on this device. Export a copy at least every 30 days.</p>{reminder && <p className="mt-2 text-sm font-semibold text-accent">Backup reminder: it’s time to export a fresh copy.</p>}<div className="mt-4 grid grid-cols-2 gap-3"><button onClick={exportData} className="flex min-h-12 items-center justify-center gap-2 rounded-full bg-accent font-semibold text-ink"><Download size={18} />Export</button><button onClick={() => fileRef.current?.click()} className="flex min-h-12 items-center justify-center gap-2 rounded-full border border-line font-semibold"><Upload size={18} />Import</button><input ref={fileRef} type="file" accept="application/json" onChange={(event) => importFile(event.target.files?.[0])} className="hidden" /></div></section>
+    <section className="mt-4 rounded-card border border-line bg-panel p-4"><div className="flex items-center gap-2"><Database size={20} className="text-accent" /><h2 className="font-semibold">Where your progress is saved</h2></div><p className="mt-3 text-sm leading-6 text-muted">Workout drafts, routines, measurements, and settings are saved automatically inside this browser on this device. SteadyLift keeps a fast local copy plus an IndexedDB mirror. Nothing is sent to a server.</p><p className="mt-3 rounded-xl border border-line bg-ink p-3 text-sm text-white">{storageWarning ?? (lastSavedAt ? `Last saved: ${new Date(lastSavedAt).toLocaleString()}` : 'No changes saved yet.')}</p><p className="mt-3 text-xs leading-5 text-muted">Clearing this site’s browser data, using private browsing, or removing the app without exporting can erase local records.</p><button onClick={async () => { const protectedStorage = await requestPersistentStorage(); setMessage(protectedStorage ? 'This browser granted protected local storage.' : 'The browser kept standard local storage. Regular exports are still recommended.') }} className="mt-3 flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-accent font-semibold text-accent"><ShieldCheck size={18} />Protect local storage</button></section>
+
+    <section className="mt-4 rounded-card border border-line bg-panel p-4"><h2 className="font-semibold">Workout preferences</h2><label className="mt-3 block text-sm text-muted">Default rest timer (seconds)<input type="number" inputMode="numeric" min="15" max="600" step="5" value={restSeconds} onChange={(event) => setRestSeconds(Math.max(15, Math.min(600, Number(event.target.value) || 15)))} className="mt-2 min-h-12 w-full rounded-xl border border-line bg-ink px-3 text-base text-white outline-none" /></label><button onClick={() => { saveProfile({ ...profile, restSeconds }); setMessage('Workout preferences saved.') }} className="mt-3 flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-accent font-bold text-ink"><Save size={18} />Save preferences</button></section>
+
+    <section className={`mt-4 rounded-card border p-4 ${reminder ? 'border-[#5369a3] bg-navy' : 'border-line bg-panel'}`}><h2 className="font-semibold">Backup your data</h2><p className="mt-1 text-sm leading-6 text-muted">Everything stays on this device. Your backup includes {logs.length} workout log{logs.length === 1 ? '' : 's'} and {Object.keys(customWorkouts).length} custom routine{Object.keys(customWorkouts).length === 1 ? '' : 's'}.</p>{reminder && <p className="mt-2 text-sm font-semibold text-accent">Backup reminder: it’s time to export a fresh copy.</p>}<div className="mt-4 grid grid-cols-2 gap-3"><button onClick={exportData} className="flex min-h-12 items-center justify-center gap-2 rounded-full bg-accent font-semibold text-ink"><Download size={18} />Export</button><button onClick={() => fileRef.current?.click()} className="flex min-h-12 items-center justify-center gap-2 rounded-full border border-line font-semibold"><Upload size={18} />Import</button><input ref={fileRef} type="file" accept="application/json" onChange={(event) => importFile(event.target.files?.[0])} className="hidden" /></div></section>
     {message && <p role="status" className="mt-4 rounded-2xl border border-line bg-panel p-3 text-sm text-accent">{message}</p>}
   </main>
 }
