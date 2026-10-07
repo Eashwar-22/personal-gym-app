@@ -10,8 +10,8 @@ export default defineConfig(({ mode }) => ({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg'],
       manifest: {
-        name: 'SteadyLift',
-        short_name: 'SteadyLift',
+        name: 'Personal Offline Workout Tracker',
+        short_name: 'Personal Offline Workout Tracker',
         description: 'A gentle, beginner-friendly offline gym tracker.',
         theme_color: '#18181b',
         background_color: '#18181b',

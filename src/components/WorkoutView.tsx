@@ -1,16 +1,17 @@
-import { CalendarDays, CheckCircle2, ChevronRight, Flame, Pencil, Plus, ShieldCheck, Trophy } from 'lucide-react'
+import { AlertCircle, CalendarDays, CheckCircle2, ChevronRight, Flame, Pencil, Plus, ShieldCheck, Trophy } from 'lucide-react'
 import { motion } from 'framer-motion'
 import type { Exercise, WorkoutDay, WorkoutLog } from '../types'
 import { exerciseMap, plan } from '../data/plan'
 import { dateKey, longDate, suggestedWorkoutForDate, workoutForDate } from '../utils/date'
 import { streaks, workoutScore } from '../utils/stats'
 
-export function WorkoutView({ date, logs, swaps, choices, customWorkouts, savedRoutines, lastSavedAt, onChoose, onCustomize, onOpenCalendar, onExercise, onFinish }: { date: Date; logs: WorkoutLog[]; swaps: Record<string, string>; choices: Record<string, string>; customWorkouts: Record<string, WorkoutDay>; savedRoutines: Record<string, WorkoutDay>; lastSavedAt?: string; onChoose: (workoutId: string) => void; onCustomize: (routineId?: string) => void; onOpenCalendar: () => void; onExercise: (exercise: Exercise, workout: WorkoutDay, originalId: string) => void; onFinish: (workout: WorkoutDay, score: number) => void }) {
+export function WorkoutView({ date, logs, swaps, choices, customWorkouts, savedRoutines, lastSavedAt, storageWarning, onChoose, onCustomize, onOpenCalendar, onExercise, onFinish }: { date: Date; logs: WorkoutLog[]; swaps: Record<string, string>; choices: Record<string, string>; customWorkouts: Record<string, WorkoutDay>; savedRoutines: Record<string, WorkoutDay>; lastSavedAt?: string; storageWarning?: string; onChoose: (workoutId: string) => void; onCustomize: (routineId?: string) => void; onOpenCalendar: () => void; onExercise: (exercise: Exercise, workout: WorkoutDay, originalId: string) => void; onFinish: (workout: WorkoutDay, score: number) => void }) {
   const key = dateKey(date)
   const workout = workoutForDate(date, logs, choices, customWorkouts, savedRoutines)
   const routines = Object.values(savedRoutines)
   const suggested = suggestedWorkoutForDate(date, logs)
   const log = logs.find((item) => item.date === key && item.workoutId === workout.id)
+  const otherSessions = logs.filter((item) => item.date === key && item.workoutId !== workout.id)
   const expectedExerciseIds = workout.exercises.map((item) => swaps[`${key}:${item.exerciseId}`] ?? item.exerciseId)
   const activeExerciseLogs = log?.exercises.filter((entry) => expectedExerciseIds.includes(entry.exerciseId)) ?? []
   const streak = streaks(logs)
@@ -32,13 +33,14 @@ export function WorkoutView({ date, logs, swaps, choices, customWorkouts, savedR
         <button type="button" onClick={() => onCustomize()} className="mt-3 flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-accent text-sm font-semibold text-accent"><Plus size={17} />Create another routine</button>
         <p className="mt-3 text-xs leading-5 text-muted">Choose any routine on any day. Nothing is assigned to a weekday.</p>
       </section>
-      <div className="mt-3 flex items-center gap-2 rounded-xl border border-[#315343] bg-[#1e2b24] px-3 py-2 text-xs text-success"><CheckCircle2 size={15} /><span>{lastSavedAt ? `Saved on this device at ${new Date(lastSavedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}` : 'Changes save automatically on this device'}</span></div>
+      <div className={`mt-3 flex items-center gap-2 rounded-xl border px-3 py-2 text-xs ${storageWarning ? 'border-danger bg-[#352429] text-danger' : 'border-[#315343] bg-[#1e2b24] text-success'}`}>{storageWarning ? <AlertCircle size={15} /> : <CheckCircle2 size={15} />}<span>{storageWarning ?? (lastSavedAt ? `Saved on this device at ${new Date(lastSavedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}` : 'Changes save automatically on this device')}</span></div>
       <>
         <section className="mt-5 grid grid-cols-2 gap-3 rounded-card border border-line bg-panel p-4">
           <div className="flex items-center gap-3"><span className="grid h-10 w-10 place-items-center rounded-full bg-[#2a2f3f] text-accent"><Flame size={19} /></span><div><p className="text-xs text-muted">Last 7 days</p><p className="text-lg font-bold tabular">{streak.current} workout{streak.current === 1 ? '' : 's'}</p></div></div>
-          <div className="flex items-center gap-3"><span className="grid h-10 w-10 place-items-center rounded-full bg-[#2a2f3f] text-accent"><Trophy size={19} /></span><div><p className="text-xs text-muted">Today’s score</p><p className="text-lg font-bold tabular">{score} pts</p></div></div>
+          <div className="flex items-center gap-3"><span className="grid h-10 w-10 place-items-center rounded-full bg-[#2a2f3f] text-accent"><Trophy size={19} /></span><div><p className="text-xs text-muted">Session score</p><p className="text-lg font-bold tabular">{score} pts</p></div></div>
         </section>
-        <div className="mt-6 flex items-end justify-between"><div><p className="text-sm text-muted">Your session</p><h2 className="text-2xl font-bold">{workout.exercises.length} exercises</h2></div><span className="text-sm text-muted">~55 min</span></div>
+        {otherSessions.length > 0 && <section className="mt-3 rounded-card border border-line bg-panel p-4"><h2 className="font-semibold">Other sessions on this day</h2><div className="mt-2 space-y-2">{otherSessions.map((session) => { const option = savedRoutines[session.workoutId] ?? plan.find((item) => item.id === session.workoutId); return <div key={session.workoutId} className="flex items-center justify-between gap-3 rounded-xl border border-line bg-ink p-3"><div className="min-w-0"><p className="truncate font-semibold">{option?.name ?? session.workoutId}</p><p className="text-xs text-muted">{session.exercises.length} started · {session.exercises.filter((item) => item.completed).length} done · {session.completed ? 'Finished' : 'In progress'} · {workoutScore(session.exercises, option?.exercises.length ?? session.exercises.length, session.completed)} pts</p></div>{option && <button type="button" onClick={() => onChoose(session.workoutId)} className="min-h-11 shrink-0 rounded-full border border-accent px-3 text-sm font-semibold text-accent">View</button>}</div> })}</div></section>}
+        <div className="mt-6 flex items-end justify-between"><div><p className="text-sm text-muted">Your session</p><h2 className="text-2xl font-bold">{workout.exercises.length} exercises</h2></div><span className="text-sm text-muted">{workout.exercises.reduce((total, item) => total + item.sets, 0)} working sets</span></div>
         <div className="mt-3 flex gap-2 rounded-2xl border border-[#34405e] bg-navy p-3 text-sm leading-5 text-[#c9d2f3]"><ShieldCheck className="mt-0.5 shrink-0 text-accent" size={18} /><span>Shoulder work stays light and controlled. Stop if you feel sharp pain.</span></div>
         <div className="mt-4 divide-y divide-line">{workout.exercises.map((item) => {
           const exerciseId = swaps[`${dateKey(date)}:${item.exerciseId}`] ?? item.exerciseId

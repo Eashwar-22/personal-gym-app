@@ -3,28 +3,46 @@ import { createJSONStorage, persist, type StateStorage } from 'zustand/middlewar
 import { del, get, set as idbSet } from 'idb-keyval'
 import type { BodyLog, ExerciseLog, Profile, WorkoutDay, WorkoutLog } from './types'
 
-// localStorage is written synchronously so closing the PWA immediately after a
-// set cannot lose the latest edit. IndexedDB remains a second, independent copy
-// and is also used to migrate data saved by earlier versions of the app.
+// Keep the existing key after the app rename so installed users retain their data.
+// localStorage is written synchronously and IndexedDB is an independent mirror.
+const storedTime = (value: string | null) => {
+  if (value === null) return -1
+  try {
+    const state = JSON.parse(value)?.state
+    if (!state || typeof state !== 'object') return -1
+    const time = Date.parse(state.lastSavedAt ?? '')
+    return Number.isFinite(time) ? time : 0
+  } catch { return -1 }
+}
+
+let storageIssueNotified = false
+const reportStorageIssue = (message: string) => {
+  if (storageIssueNotified) return
+  storageIssueNotified = true
+  queueMicrotask(() => useAppStore.setState({ storageWarning: message }))
+}
+
 const durableBrowserStorage: StateStorage = {
   getItem: async (name) => {
+    let localValue: string | null = null
+    let indexedValue: string | null = null
     try {
-      const localValue = localStorage.getItem(name)
-      if (localValue !== null) return localValue
+      localValue = localStorage.getItem(name)
     } catch { /* IndexedDB can still recover the data. */ }
-    try {
-      const indexedValue = await get<string>(name)
-      if (indexedValue !== undefined) {
-        try { localStorage.setItem(name, indexedValue) } catch { /* Keep the IndexedDB copy. */ }
-        return indexedValue
-      }
-    } catch { /* Start with defaults if both browser stores are unavailable. */ }
-    return null
+    try { indexedValue = await get<string>(name) ?? null } catch { /* localStorage may still have the data. */ }
+    const localTime = storedTime(localValue)
+    const indexedTime = storedTime(indexedValue)
+    if (indexedTime > localTime) {
+      try { localStorage.setItem(name, indexedValue!) } catch { /* Keep the IndexedDB copy. */ }
+      return indexedValue
+    }
+    if (localTime >= 0) return localValue
+    return indexedValue ?? localValue
   },
   setItem: (name, value) => {
     let localSaved = false
     try { localStorage.setItem(name, value); localSaved = true } catch { /* Mirror below may still work. */ }
-    const mirror = idbSet(name, value).catch(() => undefined)
+    const mirror = idbSet(name, value).then(() => { if (!localSaved) reportStorageIssue('Only the slower IndexedDB copy is available. Export a backup before closing the app.') }).catch(() => reportStorageIssue(localSaved ? 'The IndexedDB mirror is unavailable. Your data is in local storage only; export backups regularly.' : 'This browser could not save your changes. Export your data before closing the app.'))
     return localSaved ? undefined : mirror
   },
   removeItem: (name) => {

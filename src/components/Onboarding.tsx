@@ -7,17 +7,24 @@ export function Onboarding({ onSave }: { onSave: (profile: Profile) => void }) {
   const [weight, setWeight] = useState('')
   const [height, setHeight] = useState('')
   const validMeasurements = weight.trim() !== '' && height.trim() !== '' && Number.isFinite(Number(weight)) && Number.isFinite(Number(height)) && Number(weight) > 0 && Number(height) > 0
+  const changeUnits = (next: UnitSystem) => {
+    if (next === units) return
+    const convert = (value: string, factor: number) => value.trim() !== '' && Number.isFinite(Number(value)) ? String(Number((Number(value) * factor).toFixed(1))) : value
+    setWeight((current) => convert(current, next === 'imperial' ? 2.20462 : 1 / 2.20462))
+    setHeight((current) => convert(current, next === 'imperial' ? 1 / 2.54 : 2.54))
+    setUnits(next)
+  }
 
-  return <main className="mx-auto flex min-h-dvh max-w-md flex-col justify-between px-5 py-8 safe-bottom">
+  return <main className="mx-auto min-h-dvh max-w-md px-5 pb-28 pt-8">
     <section>
       <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-2xl bg-accent text-ink"><Dumbbell size={28} strokeWidth={2.5} /></div>
-      <p className="mb-2 text-sm font-semibold uppercase tracking-[.18em] text-accent">SteadyLift</p>
+      <p className="mb-2 text-xs font-semibold uppercase tracking-[.12em] text-accent">Personal Offline Workout Tracker</p>
       <h1 className="max-w-sm text-4xl font-bold leading-[1.05]">Build strength at your pace.</h1>
       <p className="mt-4 text-base leading-7 text-muted">A straightforward 4-workout rotation for beginners, with shoulder-friendly choices and no fixed training days.</p>
 
       <div className="mt-8 rounded-card border border-line bg-panel p-5">
         <div className="mb-5 flex rounded-full border border-line bg-ink p-1">
-          {(['metric', 'imperial'] as UnitSystem[]).map((item) => <button key={item} onClick={() => setUnits(item)} className={`min-h-11 flex-1 rounded-full text-sm font-semibold capitalize ${units === item ? 'bg-accent text-ink' : 'text-muted'}`}>{item}</button>)}
+          {(['metric', 'imperial'] as UnitSystem[]).map((item) => <button key={item} onClick={() => changeUnits(item)} className={`min-h-11 flex-1 rounded-full text-sm font-semibold capitalize ${units === item ? 'bg-accent text-ink' : 'text-muted'}`}>{item}</button>)}
         </div>
         <div className="grid grid-cols-2 gap-3">
           <label className="text-sm text-muted">Weight
@@ -33,7 +40,7 @@ export function Onboarding({ onSave }: { onSave: (profile: Profile) => void }) {
 
     <section className="mt-8">
       <div className="mb-5 flex gap-3 rounded-2xl border border-[#34405e] bg-navy p-4 text-sm leading-6 text-[#c9d2f3]"><ShieldCheck className="mt-0.5 shrink-0 text-accent" size={20} /><span>Keep every rep pain-free. If your recovering shoulder hurts, stop and check with your clinician or physio.</span></div>
-      <button disabled={!validMeasurements} onClick={() => onSave({ weight: Number(weight), height: Number(height), units, restSeconds: 90 })} className="min-h-14 w-full rounded-full bg-accent px-6 text-base font-bold text-ink disabled:bg-[#303035] disabled:text-muted">Start my plan</button>
     </section>
+    <div className="safe-bottom fixed inset-x-0 bottom-0 z-20 border-t border-line bg-ink px-5 pt-3"><button disabled={!validMeasurements} onClick={() => onSave({ weight: Number(weight), height: Number(height), units, restSeconds: 90 })} className="mx-auto block min-h-14 w-full max-w-md rounded-full bg-accent px-6 text-base font-bold text-ink disabled:bg-[#303035] disabled:text-muted">Start my plan</button></div>
   </main>
 }

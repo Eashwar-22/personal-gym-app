@@ -6,6 +6,7 @@ export type Exercise = {
   name: string
   group: string
   equipment: string
+  modality?: 'cardio'
   level: 'beginner' | 'intermediate'
   image?: string
   images?: string[]

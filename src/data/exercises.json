@@ -911,7 +911,11 @@
       "exercises/Side_Bridge_end.jpg"
     ],
     "sourceUrl": "https://github.com/yuhonas/free-exercise-db/tree/main/exercises/Side_Bridge",
-    "notes": [],
+    "notes": [
+      "Lie on your side with your forearm on the floor beneath your shoulder and your feet stacked or staggered.",
+      "Lift your hips to make a straight line from shoulder to ankle, then lower with control.",
+      "Skip this support position if it bothers your recovering shoulder."
+    ],
     "shoulderFriendly": false
   },
   {
@@ -935,8 +939,9 @@
   {
     "id": "Walking_Treadmill",
     "name": "Walking, Treadmill",
-    "group": "quadriceps",
+    "group": "cardio",
     "equipment": "machine",
+    "modality": "cardio",
     "level": "beginner",
     "image": "exercises/Walking_Treadmill.jpg",
     "images": [
@@ -953,8 +958,9 @@
   {
     "id": "Recumbent_Bike",
     "name": "Recumbent Bike",
-    "group": "quadriceps",
+    "group": "cardio",
     "equipment": "machine",
+    "modality": "cardio",
     "level": "beginner",
     "image": "exercises/Recumbent_Bike.jpg",
     "images": [
@@ -971,8 +977,9 @@
   {
     "id": "Jogging_Treadmill",
     "name": "Jogging, Treadmill",
-    "group": "quadriceps",
+    "group": "cardio",
     "equipment": "machine",
+    "modality": "cardio",
     "level": "beginner",
     "image": "exercises/Jogging_Treadmill.jpg",
     "images": [
@@ -988,7 +995,7 @@
   },
   {
     "id": "Air_Bike",
-    "name": "Air Bike",
+    "name": "Bicycle Crunch",
     "group": "abdominals",
     "equipment": "body only",
     "level": "beginner",

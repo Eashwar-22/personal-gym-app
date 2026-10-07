@@ -16,7 +16,7 @@ import { isPersonalBest } from './utils/stats'
 import { requestPersistentStorage } from './utils/storage'
 
 export default function App() {
-  const { hydrated, profile, logs, exerciseSwaps, workoutChoices, customWorkouts, savedRoutines, lastSavedAt, saveProfile, saveExerciseLog, completeWorkout, swapExercise, chooseWorkout, saveCustomWorkout } = useAppStore()
+  const { hydrated, profile, logs, exerciseSwaps, workoutChoices, customWorkouts, savedRoutines, lastSavedAt, storageWarning, saveProfile, saveExerciseLog, completeWorkout, swapExercise, chooseWorkout, saveCustomWorkout } = useAppStore()
   const [tab, setTab] = useState<Tab>('today')
   const [selectedDate, setSelectedDate] = useState(new Date())
   const [calendarOpen, setCalendarOpen] = useState(false)
@@ -25,7 +25,7 @@ export default function App() {
   if (!hydrated) return <main className="grid min-h-dvh place-items-center text-muted"><LoaderCircle className="animate-spin" /><span className="sr-only">Loading your plan</span></main>
   if (!profile) return <Onboarding onSave={(nextProfile) => { saveProfile(nextProfile); void requestPersistentStorage() }} />
   return <div className="mx-auto min-h-dvh max-w-lg bg-ink">
-    {tab === 'today' && <WorkoutView date={selectedDate} logs={logs} swaps={exerciseSwaps} choices={workoutChoices} customWorkouts={customWorkouts} savedRoutines={savedRoutines ?? {}} lastSavedAt={lastSavedAt} onChoose={(workoutId) => chooseWorkout(dateKey(selectedDate), workoutId)} onCustomize={(routineId) => setEditingRoutineId(routineId ?? 'new')} onOpenCalendar={() => setCalendarOpen(true)} onExercise={(exercise, workout, originalId) => setActiveExercise({ exercise, workout, originalId })} onFinish={(workout, score) => completeWorkout(dateKey(selectedDate), workout.id, score)} />}
+    {tab === 'today' && <WorkoutView date={selectedDate} logs={logs} swaps={exerciseSwaps} choices={workoutChoices} customWorkouts={customWorkouts} savedRoutines={savedRoutines ?? {}} lastSavedAt={lastSavedAt} storageWarning={storageWarning} onChoose={(workoutId) => chooseWorkout(dateKey(selectedDate), workoutId)} onCustomize={(routineId) => setEditingRoutineId(routineId ?? 'new')} onOpenCalendar={() => setCalendarOpen(true)} onExercise={(exercise, workout, originalId) => setActiveExercise({ exercise, workout, originalId })} onFinish={(workout, score) => completeWorkout(dateKey(selectedDate), workout.id, score)} />}
     {tab === 'calendar' && <CalendarView logs={logs} choices={workoutChoices} selected={selectedDate} onSelect={(date) => { setSelectedDate(date); setTab('today') }} />}
     {tab === 'library' && <LibraryView />}
     {tab === 'progress' && <ProgressView profile={profile} logs={logs} />}
