@@ -1,18 +1,20 @@
 # Personal Offline Workout Tracker
 
-Personal Offline Workout Tracker is a private, offline-first gym log for a beginner returning carefully to shoulder training. It has no backend, account, analytics, or ads. The app and its exercise images are bundled locally; two exercises link to external demonstrations that need an internet connection.
+Build the workout you want, log it as you go, and keep your training history on your own device. Personal Offline Workout Tracker is a private, installable gym log that works without an account, backend, ads, or analytics.
+
+Choose any workout category on any day, start from a template or make as many custom routines as you need, then record weights, reps, sets, notes, and body measurements at your own pace. Your data stays in your browser until you choose to export a backup.
 
 ## What it includes
 
-- One-time onboarding for units and body stats, with no assigned training weekdays
-- Four beginner-friendly workout templates plus a reusable custom routine library for choosing exercises, order, sets, and rep ranges on any day
-- Shoulder-friendly external rotation, rear-delt, neutral-grip, machine, and cable choices
-- Auto-saved workout drafts, typed weights and reps, adjustable set counts, exercise notes, a configurable rest timer, same-muscle swaps, scoring, personal bests, and weekly consistency counts
-- A searchable 77-exercise library with locally bundled looping start/finish demonstrations for most moves, plus source links for all moves. Landmine Press and Hanging Knee Raise use linked demonstrations instead of bundled images.
-- Weight weekly averages plus waist, chest, arms, and thigh charts
-- Progressive-overload suggestions based on the previous session and estimated 1RM history
-- JSON backup/restore with a 30-day export reminder
-- Installable PWA and offline service worker
+- Train on your schedule — nothing assigns a workout category to a specific day
+- Start with a simple beginner template, or save multiple custom routines with your own exercises, order, sets, and rep targets
+- Log each set with typed weights and reps; drafts are saved while you train
+- Browse and search 77 exercises, with form notes, locally bundled movement visuals for most exercises, and demonstration links
+- Use shoulder-friendly exercise options when they suit your recovery plan
+- Review personal bests, recent sessions, consistency, weight trends, and body measurements
+- Get optional progressive-overload prompts based on your previous sessions
+- Export and restore a JSON backup whenever you want
+- Install it as an offline-capable PWA on a phone or computer
 
 > Health note: this is a tracking tool, not medical advice. Use only pain-free ranges approved by your clinician or physiotherapist. Stop if you feel sharp pain, instability, or symptoms that worsen.
 
