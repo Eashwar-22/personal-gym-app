@@ -1,20 +1,16 @@
 # Personal Offline Workout Tracker
 
-Build the workout you want, log it as you go, and keep your training history on your own device. Personal Offline Workout Tracker is a private, installable gym log that works without an account, backend, ads, or analytics.
-
-Choose any workout category on any day, start from a template or make as many custom routines as you need, then record weights, reps, sets, notes, and body measurements at your own pace. Your data stays in your browser until you choose to export a backup.
+An offline gym tracker for planning workouts, recording sets, and seeing your progress. No account required; your data stays on your device.
 
 ## What it includes
 
-- Train on your schedule — nothing assigns a workout category to a specific day
-- Start with a simple beginner template, or save multiple custom routines with your own exercises, order, sets, and rep targets
-- Log each set with typed weights and reps; drafts are saved while you train
-- Browse and search 77 exercises, with form notes, locally bundled movement visuals for most exercises, and demonstration links
-- Use shoulder-friendly exercise options when they suit your recovery plan
-- Review personal bests, recent sessions, consistency, weight trends, and body measurements
-- Get optional progressive-overload prompts based on your previous sessions
-- Export and restore a JSON backup whenever you want
-- Install it as an offline-capable PWA on a phone or computer
+- Work out any category on any day
+- Use a template or create as many custom routines as you want
+- Log sets, reps, weights, and notes as you train
+- Browse 77 exercises with form tips and movement visuals
+- Track personal bests, workout history, weight, and measurements
+- Back up or restore your data with a JSON file
+- Install it on your phone and use it offline
 
 > Health note: this is a tracking tool, not medical advice. Use only pain-free ranges approved by your clinician or physiotherapist. Stop if you feel sharp pain, instability, or symptoms that worsen.
 
